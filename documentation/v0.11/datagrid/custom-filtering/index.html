@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-US"><head><script>(function(){function init(e,t){waitUntilReady((t||window).prebootData={opts:e,listening:!0,apps:[],listeners:[]})}function waitUntilReady(e,t){((t||window).document||{}).body?start(e):setTimeout(function(){waitUntilReady(e)},10)}function start(e,t){var o=t||window;if(!o.prebootStarted){o.prebootStarted=!0;var r=o.document||{},n=(e.opts||{}).eventSelectors||[];e.overlay=createOverlay(r),getAppRoots(r,e.opts).forEach(function(t){var o={root:t,events:[]};e.apps.push(o),n.forEach(function(t){return handleEvents(e,o,t)})})}}function createOverlay(e){var t=e.createElement("div");return t.setAttribute("id","prebootOverlay"),t.setAttribute("style","display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:999999;background:black;opacity:.3"),e.body.appendChild(t),t}function getAppRoots(e,t){var o=[];return t.appRoot&&t.appRoot.length&&[].concat(t.appRoot).forEach(function(e){return o.push({serverSelector:e})}),o.forEach(function(o){o.serverNode=e.querySelector(o.serverSelector),o.clientSelector=o.clientSelector||o.serverSelector,o.clientSelector!==o.serverSelector?o.clientNode=e.querySelector(o.clientSelector):t.buffer?o.clientNode=createBuffer(o):o.clientNode=o.serverNode,o.serverNode||console.log("No server node found for selector: "+o.serverSelector)}),o}function handleEvents(e,t,o){var r=t.root.serverNode;if(r){var n=r.querySelectorAll(o.selector);if(n)for(var i=0,a=n;i<a.length;i++)!function(r){o.events.forEach(function(n){var i=createListenHandler(e,o,t,r);r.addEventListener(n,i),e.listeners.push({node:r,eventName:n,handler:i})})}(a[i])}}function createListenHandler(e,t,o,r){var n=["keyup","keydown","focusin","mouseup","mousedown"],i=["INPUT","TEXTAREA"];return function(a){var c=o.root,l=a.type;if(r&&l){var s=t.keyCodes;if(!s||!s.length||s.filter(function(e){return a.which===e}).length){t.preventDefault&&a.preventDefault(),t.action&&t.action(r,a);var d=getNodeKeyForPreboot({root:c,node:r});if(n.indexOf(l)>=0&&i.indexOf(r.tagName)>=0?e.activeNode={root:c,node:r,nodeKey:d,selection:getSelection(r)}:"change"!==l&&"focusout"!==l&&(e.activeNode=null),t.freeze){var u=e.overlay;u.style.display="block",setTimeout(function(){u.style.display="none"},1e4)}t.noReplay||o.events.push({node:r,nodeKey:d,event:a,name:l})}}}}function getSelection(e){var t=(e=e||{}).value||"",o={start:t.length,end:t.length,direction:"forward"};try{(e.selectionStart||0===e.selectionStart)&&(o.start=e.selectionStart,o.end=e.selectionEnd,o.direction=e.selectionDirection)}catch(e){}return o}function createBuffer(e){var t=e.serverNode;if(!t||!t.parentNode||"html"===e.serverSelector||"body"===e.serverSelector)return t;var o=t.cloneNode(!1);return o&&(o.style.display="none",t.parentNode.insertBefore(o,t)),o}function getNodeKeyForPreboot(e){for(var t=[],o=e.root,r=e.node,n=r;n&&n!==o.serverNode&&n!==o.clientNode;)t.push(n),n=n.parentNode;n&&t.push(n);for(var i=(r.nodeName||"unknown")+"_"+o.serverSelector,a=t.length-1;a>=0;a--)if((n=t[a]).childNodes&&a>0)for(var c=0;c<n.childNodes.length;c++)if(n.childNodes[c]===t[a-1]){i+="_s"+(c+1);break}return i}init({"buffer":true,"minify":true,"eventSelectors":[{"selector":"input,textarea","events":["keypress","keyup","keydown","input","change"]},{"selector":"select,option","events":["change"]},{"selector":"input","events":["keyup"],"preventDefault":true,"keyCodes":[13],"freeze":true},{"selector":"form","events":["submit"],"preventDefault":true,"freeze":true},{"selector":"input,textarea","events":["focusin","focusout","mousedown","mouseup"],"noReplay":true},{"selector":"button","events":["click"],"preventDefault":true,"freeze":true}],"appRoot":"body"})})()</script><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Datagrid</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Datagrid</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -131,11 +131,11 @@
 </p>
 <p _ngcontent-c93="">
     The filter you provide to the <code _ngcontent-c93="" class="clr-code">&lt;clr-dg-filter&gt;</code> component
-    needs to implement the <code _ngcontent-c93="" class="clr-code">Filter</code> interface provided by Clarity:
+    needs to implement the <code _ngcontent-c93="" class="clr-code">ClrDatagridFilterInterface</code> interface provided by Clarity:
 </p>
 <clr-code-snippet _ngcontent-c93="" clrlanguage="typescript" _nghost-c0="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">interface Filter&lt;T&gt; {
+            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">interface ClrDatagridFilterInterface&lt;T&gt; {
     isActive(): boolean;
     accepts(item: T): boolean;
     changes: Observable&lt;any&gt;;
@@ -155,9 +155,9 @@
         instance:
         <clr-code-snippet _ngcontent-c93="" clrlanguage="typescript" _nghost-c0="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {Filter} from "clarity-angular";
+            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {ClrDatagridFilterInterface} from "@clr/angular";
 
-class MyFilter implements Filter&lt;User&gt; {
+class MyFilter implements ClrDatagridFilterInterface&lt;User&gt; {
     changes = new Subject&lt;any&gt;();
     isActive(): boolean { /* ... */ }
     accepts(user: User) { /* ... */ }
@@ -189,14 +189,14 @@ class MyComponent {
         that it can register itself:
         <clr-code-snippet _ngcontent-c93="" clrlanguage="typescript" _nghost-c0="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {Filter, DatagridFilter} from "clarity-angular";
+            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {ClrDatagridFilterInterface, ClrDatagridFilter} from "@clr/angular";
 
 @Component({
     selector: "my-filter",
     /* ... */
 })
 class MyFilter implements Filter&lt;User&gt; {
-    constructor(private filterContainer: DatagridFilter) {
+    constructor(private filterContainer: ClrDatagridFilter) {
         filterContainer.setFilter(this);
     }
     changes = new Subject&lt;any&gt;();
@@ -397,49 +397,16 @@ class MyReusableFilter {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        30085
+        79149
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
+        Johnson
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dec 8, 2016
+        Jun 29, 2017
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Ivysaur
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Magenta;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        43828
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 30, 2015
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dragonair
+        Vulpix
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
@@ -463,16 +430,115 @@ class MyReusableFilter {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        78230
+        448
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Sheridan
+        Roslyn
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 5, 2015
+        Mar 15, 2016
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Lapras
+        Porygon
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        10450
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Rhona
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        May 17, 2016
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Poliwhirl
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Indigo;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        83735
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Letisha
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Jun 4, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Butterfree
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Orange;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        29688
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Ellen
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Jun 26, 2017
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Mr. Mime
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
@@ -496,53 +562,20 @@ class MyReusableFilter {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        8648
+        23451
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jeana
+        Graham
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jun 3, 2016
+        Sep 27, 2014
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Caterpie
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:White;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        74961
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Sheridan
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Nov 8, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Ninetales
+        Wigglytuff
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Magenta;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -562,152 +595,119 @@ class MyReusableFilter {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        20242
+        18032
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
+        Nidia
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        May 5, 2017
+        Sep 25, 2016
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Gyarados
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Violet;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        31055
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Desirae
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 4, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Golduck
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        40649
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Johnson
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Mar 4, 2017
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Ditto
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        28399
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Lottie
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 17, 2017
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Golem
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Purple;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        91687
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Debby
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jan 15, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jigglypuff
+        Seaking
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
             <span _ngcontent-c93="" class="color-square" style="backgroundColor:Brown;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        78388
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Keenan
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Mar 5, 2016
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Abra
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Purple;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        78210
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Kaitlin
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Aug 25, 2017
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Muk
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Cyan;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        83759
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Letisha
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Apr 3, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Magnemite
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Green;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -751,13 +751,13 @@ class MyReusableFilter {
 
 <clr-code-snippet _ngcontent-c93="" clrlanguage="typescript" _nghost-c0="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {Filter} from "clarity-angular";
+            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-typescript">import {ClrDatagridFilterInterface} from "@clr/angular";
 
 @Component({
     selector: "color-filter",
     /* The rest of the filter component's declaration */
 })
-class ColorFilter implements Filter&lt;User&gt; {
+class ColorFilter implements ClrDatagridFilterInterface&lt;User&gt; {
     changes = new Subject&lt;any&gt;();
     isActive(): boolean { /* ... */ }
     accepts(user: User) { /* ... */ }
@@ -944,17 +944,87 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        30085
+        10450
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
+        Rhona
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dec 8, 2016
+        May 17, 2016
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            Ivysaur <span _ngcontent-c93="" class="badge badge-5">#2</span>
+            Poliwhirl <span _ngcontent-c93="" class="badge badge-5">#61</span>
+        
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Indigo;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        83735
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Letisha
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Jun 4, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            Butterfree <span _ngcontent-c93="" class="badge badge-5">#12</span>
+        
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Orange;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        23451
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Graham
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        Sep 27, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            Wigglytuff <span _ngcontent-c93="" class="badge badge-5">#40</span>
         
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
@@ -979,22 +1049,22 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        43828
+        18032
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
+        Nidia
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 30, 2015
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            Dragonair <span _ngcontent-c93="" class="badge badge-5">#148</span>
-        
+        Sep 25, 2016
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Red;"></span>
+            Seaking <span _ngcontent-c93="" class="badge badge-5">#119</span>
+        
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Brown;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1014,17 +1084,17 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        78230
+        78388
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Sheridan
+        Keenan
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 5, 2015
+        Mar 5, 2016
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            Lapras <span _ngcontent-c93="" class="badge badge-5">#131</span>
+            Abra <span _ngcontent-c93="" class="badge badge-5">#63</span>
         
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
@@ -1049,57 +1119,22 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        8648
+        78210
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jeana
+        Kaitlin
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Jun 3, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            Caterpie <span _ngcontent-c93="" class="badge badge-5">#10</span>
-        
+        Aug 25, 2017
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:White;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        74961
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Sheridan
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Nov 8, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            Ninetales <span _ngcontent-c93="" class="badge badge-5">#38</span>
+            Muk <span _ngcontent-c93="" class="badge badge-5">#89</span>
         
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Cyan;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1119,57 +1154,22 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
             <!---->
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        20242
+        83759
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Dorian
+        Letisha
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        May 5, 2017
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            Gyarados <span _ngcontent-c93="" class="badge badge-5">#130</span>
-        
+        Apr 3, 2014
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Violet;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c93="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        31055
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Desirae
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        Apr 4, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
-        
-            Golduck <span _ngcontent-c93="" class="badge badge-5">#55</span>
+            Magnemite <span _ngcontent-c93="" class="badge badge-5">#81</span>
         
     </clr-dg-cell>
         <clr-dg-cell _ngcontent-c93="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Gray;"></span>
+            <span _ngcontent-c93="" class="color-square" style="backgroundColor:Green;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1323,14 +1323,6 @@ class ColorFilter implements Filter&lt;User&gt; {
             <!---->
         <!---->
             <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/iconography">
-                    Iconography
-                    <!---->
-                    <!---->
-                </a>
-            </li>
         <!---->
             <!---->
         <!---->
@@ -1519,8 +1511,6 @@ class ColorFilter implements Filter&lt;User&gt; {
                 </a>
             </li>
         <!---->
-            <!---->
-        <!---->
             <!----><li>
                 <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/input-fields">
                     Input Fields
@@ -1696,4 +1686,4 @@ class ColorFilter implements Filter&lt;User&gt; {
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.705d153006d11e47b81f.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.9a7761e31b520e76d3eb.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.acec44f33c2c70dbbe9c.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.05951d295af1ff00867e.bundle.js"></script></body></html>

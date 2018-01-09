@@ -10,7 +10,6 @@ var _self = (typeof window !== 'undefined')
 		? self // if in worker
 		: {}   // if in node js
 	);
-_self = window;
 
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting
