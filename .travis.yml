@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "8"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run deploy:ci
+deploy:
+  provider: pages
+  local_dir: dist/deploy
+  skip-cleanup: true
+  github-token: $GITHUB_OAUTH_TOKEN
+  keep-history: true
+  committer-from-gh: true
+  on:
+    branch: v0.10-website
