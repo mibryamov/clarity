@@ -5,8 +5,8 @@
  */
 
 import { Component, ContentChild, Input, OnDestroy, Optional } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { isBoolean } from 'util';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ClrLabel } from '../common/label';
@@ -19,17 +19,18 @@ import { NgControlService } from '../common/providers/ng-control.service';
   template: `
     <ng-content select="label"></ng-content>
     <label *ngIf="!label && addGrid()"></label>
-    <div class="clr-control-container" [ngClass]="controlClass()">
-      <div [class.clr-radio-inline]="clrInline">
-        <ng-content select="clr-radio-wrapper"></ng-content>
+    <div class="clr-control-container" [class.clr-radio-inline]="clrInline" [ngClass]="controlClass()">
+      <ng-content select="clr-radio-wrapper"></ng-content>
+      <div class="clr-subtext-container">
+        <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
+        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
     </div>
     `,
   host: {
     '[class.clr-form-control]': 'true',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
   providers: [NgControlService, ControlClassService, IfErrorService],
@@ -39,6 +40,7 @@ export class ClrRadioContainer implements OnDestroy {
   invalid = false;
   @ContentChild(ClrLabel) label: ClrLabel;
   private inline = false;
+  control: NgControl;
 
   /*
    * Here we want to support the following cases
@@ -48,8 +50,11 @@ export class ClrRadioContainer implements OnDestroy {
    */
   @Input()
   set clrInline(value: boolean | string) {
-    if (!isBoolean(value)) {
-      this.inline = value === 'false' ? false : true;
+    if (value === 'false') {
+      this.inline = false;
+    }
+    if (value === undefined || value === '') {
+      this.inline = true;
     } else {
       this.inline = !!value;
     }
@@ -61,11 +66,19 @@ export class ClrRadioContainer implements OnDestroy {
   constructor(
     private ifErrorService: IfErrorService,
     @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService
+    private controlClassService: ControlClassService,
+    private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(controls => {
+        this.invalid = controls[0].invalid;
+      })
+    );
+    this.subscriptions.push(
+      this.ngControlService.controlChanges.subscribe(controls => {
+        if (controls[0]) {
+          this.control = controls[0];
+        }
       })
     );
   }
@@ -82,6 +95,6 @@ export class ClrRadioContainer implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

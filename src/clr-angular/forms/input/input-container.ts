@@ -5,6 +5,7 @@
  */
 
 import { Component, ContentChild, OnDestroy, Optional } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -31,24 +32,35 @@ import { ControlClassService } from '../common/providers/control-class.service';
     `,
   host: {
     '[class.clr-form-control]': 'true',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
 export class ClrInputContainer implements DynamicWrapper, OnDestroy {
-  subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
   invalid = false;
   _dynamic = false;
   @ContentChild(ClrLabel) label: ClrLabel;
+  control: NgControl;
 
   constructor(
     private ifErrorService: IfErrorService,
     @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService
+    private controlClassService: ControlClassService,
+    ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(controls => {
+        this.invalid = controls[0].invalid;
+      })
+    );
+
+    this.subscriptions.push(
+      ngControlService.controlChanges.subscribe(controls => {
+        if (controls[0]) {
+          this.control = controls[0];
+        }
       })
     );
   }

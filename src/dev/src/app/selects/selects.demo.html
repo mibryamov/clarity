@@ -198,7 +198,7 @@
   </div>
 </form>
 
-<h2>Angular Select</h2>
+<h2>Angular Select <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
 
 <h4>Vertical</h4>
 
@@ -232,6 +232,17 @@
   <clr-select-container>
     <label>Multi</label>
     <select multiple clrSelect [(ngModel)]="vertical.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="vertical.five" name="five" required [disabled]="disabled">
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
@@ -280,6 +291,17 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="horizontal.five" name="five" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
 </form>
 
 <h4>Compact</h4>
@@ -314,6 +336,17 @@
   <clr-select-container>
     <label>Multi</label>
     <select multiple clrSelect [(ngModel)]="compact.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="compact.five" name="five" required [disabled]="disabled">
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>

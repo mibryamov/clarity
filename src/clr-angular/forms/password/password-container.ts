@@ -53,6 +53,7 @@ export function ToggleServiceProvider() {
     `,
   host: {
     '[class.clr-form-control]': 'true',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
   providers: [
@@ -65,7 +66,7 @@ export function ToggleServiceProvider() {
   ],
 })
 export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
-  subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
   invalid = false;
   control: NgControl;
   _dynamic = false;
@@ -90,17 +91,25 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     @Optional() private layoutService: LayoutService,
     private controlClassService: ControlClassService,
     public focusService: FocusService,
+    private ngControlService: NgControlService,
     @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>,
     public commonStrings: ClrCommonStrings
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(controls => {
+        this.invalid = controls[0].invalid;
       })
     );
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
+      })
+    );
+    this.subscriptions.push(
+      this.ngControlService.controlChanges.subscribe(controls => {
+        if (controls[0]) {
+          this.control = controls[0];
+        }
       })
     );
   }

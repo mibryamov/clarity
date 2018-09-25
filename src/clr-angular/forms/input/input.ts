@@ -25,11 +25,6 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> implements O
     el: ElementRef
   ) {
     super(ClrInputContainer, vcr, 1);
-    if (!control) {
-      throw new Error(
-        'clrInput can only be used within an Angular form control, add ngModel or formControl to the input'
-      );
-    }
     if (controlClassService) {
       controlClassService.initControlClass(renderer, el.nativeElement);
     }
@@ -38,7 +33,7 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> implements O
   ngOnInit() {
     super.ngOnInit();
     if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
+      this.controlId = this.ngControlService.setControl(this.control);
     }
   }
 
@@ -46,6 +41,12 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> implements O
   onBlur() {
     if (this.ifErrorService) {
       this.ifErrorService.triggerStatusChange();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.ngControlService) {
+      this.ngControlService.removeControl(this.controlId);
     }
   }
 }

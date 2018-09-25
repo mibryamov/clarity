@@ -4,7 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, Renderer2, ElementRef, HostListener, OnInit, Optional, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  Renderer2,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Optional,
+  ViewContainerRef,
+  OnDestroy,
+} from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -14,7 +23,7 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ClrRadioWrapper } from '../radio/radio-wrapper';
 
 @Directive({ selector: '[clrRadio]' })
-export class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit {
+export class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit, OnDestroy {
   constructor(
     vcr: ViewContainerRef,
     @Optional() private ngControlService: NgControlService,
@@ -33,7 +42,7 @@ export class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnI
   ngOnInit() {
     super.ngOnInit();
     if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
+      this.controlId = this.ngControlService.setControl(this.control);
     }
   }
 
@@ -41,6 +50,12 @@ export class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnI
   onBlur() {
     if (this.ifErrorService) {
       this.ifErrorService.triggerStatusChange();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.ngControlService) {
+      this.ngControlService.removeControl(this.controlId);
     }
   }
 }

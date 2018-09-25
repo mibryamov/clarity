@@ -16,12 +16,12 @@ export default function(): void {
       service = new NgControlService();
     });
 
-    it('provides observable for control changes, passing the control', () => {
+    it('provides observable for control changes, passing the controls', () => {
       const cb = jasmine.createSpy('cb');
       const sub = service.controlChanges.subscribe(control => cb(control));
       expect(cb).not.toHaveBeenCalled();
       service.setControl(testControl);
-      expect(cb).toHaveBeenCalledWith(testControl);
+      expect(cb).toHaveBeenCalledWith([testControl]);
       sub.unsubscribe();
     });
   });

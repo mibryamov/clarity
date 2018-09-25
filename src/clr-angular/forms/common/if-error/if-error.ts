@@ -28,12 +28,25 @@ export class ClrIfError {
   private displayed: boolean = false;
 
   ngOnInit() {
-    this.subscription = this.service.statusChanges.subscribe(control => {
-      // If there is a specific error to track, check it, otherwise check overall validity
-      if (this.error) {
-        this.displayError(control.hasError(this.error));
+    this.subscription = this.service.statusChanges.subscribe(controls => {
+      let error = null;
+      if (controls.length === 1) {
+        // If there is a specific error to track, check it, otherwise check overall validity
+        if (this.error) {
+          this.displayError(controls[0].hasError(this.error));
+        } else {
+          this.displayError(controls[0].invalid);
+        }
       } else {
-        this.displayError(control.invalid);
+        let invalid = false;
+        controls.forEach(control => {
+          // If there is a specific error to track, check it, otherwise check overall validity
+          if (this.error) {
+            this.displayError(controls[0].hasError(this.error));
+          } else {
+            this.displayError(controls[0].invalid);
+          }
+        });
       }
     });
   }

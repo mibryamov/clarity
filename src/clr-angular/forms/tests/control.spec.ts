@@ -16,6 +16,8 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 
+// @TODO This test doesn't do anything now, needs to rewrite so that this tests the case
+// where the control is used without forms (and should not throw errors)
 export function ControlInvalidSpec(testControl, testComponent): void {
   describe('invalid use', () => {
     it('throws error when used without a form control', () => {

@@ -4,7 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, Renderer2, ElementRef, OnInit } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Optional,
+  ViewContainerRef,
+  Renderer2,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -14,7 +23,7 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrTextarea]', host: { '[class.clr-textarea]': 'true' } })
-export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implements OnInit {
+export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implements OnInit, OnDestroy {
   constructor(
     vcr: ViewContainerRef,
     @Optional() private ngControlService: NgControlService,
@@ -25,11 +34,6 @@ export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implem
     el: ElementRef
   ) {
     super(ClrTextareaContainer, vcr, 1);
-    if (!control) {
-      throw new Error(
-        'clrTextarea can only be used within an Angular form control, add ngModel or formControl to the textarea'
-      );
-    }
     if (controlClassService) {
       controlClassService.initControlClass(renderer, el.nativeElement);
     }
@@ -38,7 +42,7 @@ export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implem
   ngOnInit() {
     super.ngOnInit();
     if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
+      this.controlId = this.ngControlService.setControl(this.control);
     }
   }
 
@@ -46,6 +50,12 @@ export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implem
   onBlur() {
     if (this.ifErrorService) {
       this.ifErrorService.triggerStatusChange();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.ngControlService) {
+      this.ngControlService.removeControl(this.controlId);
     }
   }
 }

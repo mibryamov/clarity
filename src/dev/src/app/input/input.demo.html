@@ -135,7 +135,7 @@
   </div>
 </form>
 
-<h2>Angular Input</h2>
+<h2>Angular Input <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
 
 <h4>Vertical</h4>
 
@@ -149,6 +149,13 @@
   <clr-input-container>
     <label>Full example</label>
     <input type="text" placeholder="Full example" clrInput [(ngModel)]="vertical.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="vertical.four" name="four" required [disabled]="disabled" />
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-input-container>
@@ -169,6 +176,13 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="horizontal.four" name="four" required [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
 </form>
 
 <h4>Compact</h4>
@@ -183,6 +197,13 @@
   <clr-input-container>
     <label>Full example</label>
     <input type="text" placeholder="Full example" clrInput [(ngModel)]="compact.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="compact.four" name="four" required [disabled]="disabled" />
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-input-container>

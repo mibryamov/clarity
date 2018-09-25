@@ -16,6 +16,7 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
   constructor(protected wrapperType: Type<W>, protected vcr: ViewContainerRef, protected index: number = 0) {}
 
   protected controlIdService: ControlIdService;
+  protected controlId: number;
 
   _id: string;
 

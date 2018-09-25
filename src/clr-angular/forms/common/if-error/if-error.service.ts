@@ -15,19 +15,20 @@ import { NgControlService } from '../providers/ng-control.service';
 export class IfErrorService implements OnDestroy {
   // Implement our own status changes observable, since Angular controls don't
   // fire on events like blur, and we want to return the control instead of a string
-  private _statusChanges: Subject<NgControl> = new Subject();
-  get statusChanges(): Observable<NgControl> {
+  private _statusChanges = new Subject<NgControl[]>();
+  get statusChanges(): Observable<NgControl[]> {
     return this._statusChanges.asObservable();
   }
 
   private subscriptions: Subscription[] = [];
-  private control: NgControl;
+  private controlSubscriptions: Subscription[] = [];
+  private controls: NgControl[];
 
   constructor(private ngControlService: NgControlService) {
     // Wait for the control to be available
     this.subscriptions.push(
-      this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
+      this.ngControlService.controlChanges.subscribe(controls => {
+        this.controls = controls;
         this.listenForChanges();
       })
     );
@@ -35,22 +36,30 @@ export class IfErrorService implements OnDestroy {
 
   // Subscribe to the status change events, only after touched and emit the control
   private listenForChanges() {
-    this.subscriptions.push(
-      this.control.statusChanges.pipe(filter(() => this.control.touched)).subscribe(() => {
-        this._statusChanges.next(this.control);
-      })
-    );
+    this.cleanUpControls();
+    this.controls.forEach(control => {
+      this.subscriptions.push(
+        control.statusChanges.pipe(filter(() => control.touched)).subscribe(() => {
+          this._statusChanges.next(this.controls);
+        })
+      );
+    });
   }
 
   // Allows a control to push a status check upstream, such as on blur
   triggerStatusChange() {
-    if (this.control) {
-      this._statusChanges.next(this.control);
+    if (this.controls.length) {
+      this._statusChanges.next(this.controls);
     }
+  }
+
+  private cleanUpControls() {
+    this.controlSubscriptions.forEach(sub => sub.unsubscribe());
   }
 
   // Clean up subscriptions
   ngOnDestroy() {
+    this.cleanUpControls();
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

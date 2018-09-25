@@ -25,7 +25,7 @@ export default function(): void {
       expect(testControl.statusChanges.subscribe).toHaveBeenCalled();
     });
 
-    it('provides observable for statusChanges, passing the control', () => {
+    it('provides observable for statusChanges, passing the controls', () => {
       const cb = jasmine.createSpy('cb');
       const sub = service.statusChanges.subscribe(control => cb(control));
       ngControlService.setControl(testControl);
@@ -33,7 +33,7 @@ export default function(): void {
       testControl.markAsTouched();
       testControl.updateValueAndValidity();
       expect(cb).toHaveBeenCalled();
-      expect(cb).toHaveBeenCalledWith(testControl);
+      expect(cb).toHaveBeenCalledWith([testControl]);
       sub.unsubscribe();
     });
 
@@ -44,7 +44,7 @@ export default function(): void {
       // Manually trigger status check
       service.triggerStatusChange();
       expect(cb).toHaveBeenCalled();
-      expect(cb).toHaveBeenCalledWith(testControl);
+      expect(cb).toHaveBeenCalledWith([testControl]);
       sub.unsubscribe();
     });
 

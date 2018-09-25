@@ -27,7 +27,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrPassword]', host: { '[class.clr-input]': 'true' } })
 export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
-  subscription: Subscription;
+  private subscription: Subscription;
 
   constructor(
     vcr: ViewContainerRef,
@@ -41,11 +41,6 @@ export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implem
     @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>
   ) {
     super(ClrPasswordContainer, vcr, 1);
-    if (!this.control) {
-      throw new Error(
-        'clrPassword can only be used within an Angular form control, add ngModel or formControl to the input'
-      );
-    }
     if (!this.focusService) {
       throw new Error('clrPassword requires being wrapped in <clr-password-container>');
     }
@@ -60,12 +55,15 @@ export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implem
   ngOnInit() {
     super.ngOnInit();
     if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
+      this.controlId = this.ngControlService.setControl(this.control);
     }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    if (this.ngControlService) {
+      this.ngControlService.removeControl(this.controlId);
+    }
   }
 
   @HostListener('focus')

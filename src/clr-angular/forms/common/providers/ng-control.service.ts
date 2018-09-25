@@ -5,18 +5,36 @@
  */
 
 import { Injectable } from '@angular/core';
-import { NgControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
+import { NgControl } from '@angular/forms';
+
+interface ControlInterface extends NgControl {
+  id?: number;
+}
+
+let controlId = 0;
 
 @Injectable()
 export class NgControlService {
+  private controls: ControlInterface[] = [];
   // Observable to subscribe to the control, since its not available immediately for projected content
-  private _controlChanges: Subject<NgControl> = new Subject<NgControl>();
-  get controlChanges(): Observable<NgControl> {
+  private _controlChanges = new Subject<ControlInterface[]>();
+  get controlChanges(): Observable<ControlInterface[]> {
     return this._controlChanges.asObservable();
   }
 
-  setControl(control: NgControl) {
-    this._controlChanges.next(control);
+  setControl(control: ControlInterface) {
+    control.id = controlId++;
+    this.controls.push(control);
+    this._controlChanges.next(this.controls);
+    return control.id;
+  }
+
+  removeControl(id: number) {
+    const index = this.controls.findIndex(control => control.id === id);
+    if (index > -1) {
+      this.controls.splice(index, 1);
+      this._controlChanges.next(this.controls);
+    }
   }
 }

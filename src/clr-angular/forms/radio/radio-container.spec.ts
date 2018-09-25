@@ -24,11 +24,11 @@ class NoLabelTest {}
       <label>Hello World</label>
       <clr-radio-wrapper>
         <label>One</label>
-        <input type="radio" clrRadio name="model" required [(ngModel)]="model" value="one" />
+        <input type="radio" clrRadio name="model" required [(ngModel)]="model" value="one" [disabled]="disabled" />
       </clr-radio-wrapper>
       <clr-radio-wrapper>
         <label>Two</label>
-        <input type="radio" clrRadio name="model" required [(ngModel)]="model" value="two" />
+        <input type="radio" clrRadio name="model" required [(ngModel)]="model" value="two" [disabled]="disabled" />
       </clr-radio-wrapper>
       <clr-control-error>There was an error</clr-control-error>
       <clr-control-helper>Helper text</clr-control-helper>
@@ -36,12 +36,13 @@ class NoLabelTest {}
     `,
 })
 class TemplateDrivenTest {
+  disabled = false;
   model = '';
 }
 
 @Component({
   template: `
-  <form [formGroup]="example">
+  <form [formGroup]="form">
     <clr-radio-container>
       <label>Hello World</label>
       <clr-radio-wrapper>
@@ -58,8 +59,9 @@ class TemplateDrivenTest {
   </form>`,
 })
 class ReactiveTest {
-  example = new FormGroup({
-    model: new FormControl('', Validators.required),
+  disabled = false;
+  form = new FormGroup({
+    model: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
 }
 

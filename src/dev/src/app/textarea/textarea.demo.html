@@ -84,7 +84,7 @@
   </div>
 </form>
 
-<h2>Angular Textarea</h2>
+<h2>Angular Textarea <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
 
 <h4>Vertical</h4>
 
@@ -101,6 +101,13 @@
   <clr-textarea-container>
     <label>Label</label>
     <textarea clrTextarea [(ngModel)]="vertical.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="vertical.four" name="four" required [disabled]="disabled"></textarea>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-textarea-container>
@@ -124,6 +131,13 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
 </form>
 
 <h4>Compact</h4>
@@ -141,6 +155,13 @@
   <clr-textarea-container>
     <label>Label</label>
     <textarea clrTextarea [(ngModel)]="compact.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-textarea-container>
