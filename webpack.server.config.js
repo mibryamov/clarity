@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     // This is our Express server for Dynamic universal
     server: './server.ts',
+    prerender: './prerender.ts',
   },
   target: 'node',
   resolve: { extensions: ['.ts', '.js'] },

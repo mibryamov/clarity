@@ -2,7 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": [],
-    "resolveJsonModule": true
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "paths": {
+      "@clr/angular": ["../clr-angular"],
+      "@clr/icons": ["../clr-icons"],
+      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
+    }
   }
 }
