@@ -225,6 +225,69 @@
           }
         }
       }
+    },
+    "site-main": {
+      "root": "src/site-main/",
+      "sourceRoot": "src/site-main/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/site-main",
+            "index": "src/site-main/src/index.html",
+            "main": "src/site-main/src/main.ts",
+            "polyfills": "src/site-main/src/polyfills.ts",
+            "tsConfig": "src/site-main/tsconfig.app.json",
+            "assets": ["src/site-main/src/favicon.ico", "src/site-main/src/assets"],
+            "styles": ["src/clr-angular/main.scss", "src/clr-icons/clr-icons.scss", "src/site-main/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/site-main/src/environments/environment.ts",
+                  "with": "src/site-main/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "site-main:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "site-main:build:production"
+            }
+          }
+        }
+      }
     }
   },
   "schematics": {
