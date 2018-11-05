@@ -8,7 +8,12 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, ClarityModule, RouterModule.forRoot([])],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
+    ClarityModule,
+    RouterModule.forRoot([]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
