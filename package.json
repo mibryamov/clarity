@@ -57,7 +57,8 @@
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build site-main --prod && ng run site-main:server:production",
-    "build:prerender": "node dist/prerender"
+    "build:prerender": "node dist/prerender",
+    "ssr": "npm-run-all build:ssr build:prerender"
   },
   "dependencies": {
     "@angular/animations": "^7.0.2",
