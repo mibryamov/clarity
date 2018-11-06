@@ -1,0 +1,115 @@
+<main class="content-area" style="overflow-y: hidden">
+  <section class="main-block block">
+    <h1>Clarity Design System</h1>
+    <h4>UX guidelines, HTML/CSS framework, and Angular components working together to craft exceptional experiences</h4>
+    <div class="start-buttons">
+      <a routerLink="get-started" class="btn btn-primary">Get Started</a>
+      <a routerLink="documentation" class="btn btn-secondary">Documentation</a>
+      <p class="subtext">
+        <a href="#" class="label label-success clickable">Latest version <span class="badge">{{environment?.current?.version}}</span></a>
+        <a href="#" class="label label-info clickable" *ngIf="environment.next">Upcoming version <span class="badge">{{environment?.next?.version}}</span></a>
+      </p>
+      <p class="subtext">View the <a href="https://github.com/vmware/clarity" target="_blank">source</a> on GitHub</p>
+    </div>
+  </section>
+
+  <section class="built-for-block block card">
+    <div class="card-header">
+      <h2 class="title">Designed for designers and built for developers</h2>
+    </div>
+    <div class="card-block built-for-items">
+      <div class="built-for-item">
+        <img src="assets/images/home/sketch.png" alt="Sketch logo">
+        <h3>Sketch Template</h3>
+        <p>
+          Jumpstart your project using our <a routerLink="get-started" fragment="designResources">Sketch template</a> with ready-to-use components.
+        </p>
+      </div>
+      <div class="built-for-item">
+        <img src="assets/images/home/ux.svg" alt="UX guidelines">
+        <h3>UX guidelines</h3>
+        <p>
+          Reference UX guidelines that stem from ongoing research
+          and exploration, making it easy to design cohesive experiences.
+        </p>
+      </div>
+      <div class="built-for-item">
+        <img src="assets/images/home/html.svg" alt="HTML/CSS">
+        <h3>HTML/CSS</h3>
+        <p>
+          Start building with our HTML/CSS framework and rapidly
+          go from prototype to production.
+        </p>
+      </div>
+      <div class="built-for-item">
+        <img src="assets/images/home/angular.svg" alt="Angular logo">
+        <h3>Angular</h3>
+        <p>
+          Use our set of data-bound and performant components
+          on top of Angular to add interactivity
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-block block">
+    <h2>From prototype to product, faster and better</h2>
+
+    <div class="clr-row">
+      <div class="clr-col-6">
+        <h3><img src="assets/images/home/bulb.svg" alt="Product-Based Approach"> Product-based</h3>
+        <p>
+          We work closely with product teams to understand and
+          solve the vast array of challenges they face. These
+          solutions are built into Clarity and contributed
+          back to the community.
+        </p>
+      </div>
+      <div class="clr-col-6">
+        <h3><img src="assets/images/home/rapid.svg" alt="Rapid development"> Rapid development</h3>
+        <p>
+          Clarity’s shared foundation of design and development
+          makes communication and collaboration between different
+          areas of expertise easier than ever.
+        </p>
+      </div>
+      <div class="clr-col-6">
+
+        <h3><img src="assets/images/home/evolving.svg" alt="Evolving"> Evolving</h3>
+        <p>
+          Design patterns and technology change quickly. Clarity
+          is built to anticipate and adopt to changes quickly
+          and easily.
+        </p>
+      </div>
+      <div class="clr-col-6">
+
+        <h3><img src="assets/images/home/reliable.svg" alt="Reliable"> Reliable</h3>
+        <p>
+          We have a dedicated team focused on shipping frequently,
+          with a high bar of quality standard.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="open-source-block clr-row">
+      <div class="clr-col-6">
+        <a href="https://opensource.org/licenses/MIT" target="_blank">
+          <img src="assets/images/home/MIT.png" />
+          Clarity is licensed under the MIT License. Read more here.
+        </a>
+      </div>
+      <div class="clr-col-6">
+        <a href="https://twitter.com/VMwareClarity" target="_blank">
+          <img src="assets/images/home/twitter.svg" />
+          @VMwareClarity
+        </a>
+      </div>
+  </section>
+
+  <footer>
+    <img src="assets/images/home/vmware.svg">
+    <p>&copy; 2016 - 2018 VMware, Inc. All Rights Reserved.</p>
+  </footer>
+</main>
