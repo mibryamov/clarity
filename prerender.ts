@@ -2,6 +2,8 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 import { readFileSync, statSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import * as makeDir from 'make-dir';
+import { copySync } from 'fs-extra';
+import * as del from 'del';
 
 import { enableProdMode } from '@angular/core';
 // Express Engine
@@ -26,9 +28,11 @@ const DIST_FOLDER = join(process.cwd(), 'dist/site-main/deploy');
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/site-main/server/main');
 
-const index = readFileSync(join(SOURCE_FOLDER, 'index.html'), 'utf8');
-
+del.sync(DIST_FOLDER);
 makeDir.sync(DIST_FOLDER);
+copySync(SOURCE_FOLDER, DIST_FOLDER);
+
+const index = readFileSync(join(DIST_FOLDER, 'index.html'), 'utf8');
 
 renderModuleFactory(AppServerModuleNgFactory, {
   document: index,

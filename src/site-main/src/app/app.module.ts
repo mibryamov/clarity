@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import { RouterModule, Routes } from '@angular/router';
 
-import '@clr/icons';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
