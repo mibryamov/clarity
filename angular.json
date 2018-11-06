@@ -313,7 +313,7 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "css"
+      "styleext": "scss"
     }
   },
   "defaultProject": "dev"
