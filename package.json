@@ -53,13 +53,18 @@
     "publish:next": "npm publish dist/clr-ui --tag next; npm publish dist/clr-angular --tag next; npm publish dist/clr-icons --tag next",
     "publish:local": "npm publish dist/clr-ui --registry http://localhost:4873; npm publish dist/clr-angular --registry http://localhost:4873; npm publish dist/clr-icons --registry http://localhost:4873",
     "ks:publish": "ng build --prod ks-app; cat ./dist/ks-app/index.html > ./dist/ks-app/404.html; surge -p ./dist/ks-app",
+    
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build site-main --prod && ng run site-main:server:production",
     "build:prerender": "node dist/prerender",
     "ssr": "npm-run-all build:ssr build:prerender",
-    "site:contributors": "node ./scripts/sync-contributors.js"
+    "site:contributors": "node ./scripts/sync-contributors.js",
+
+    "build:site": "npm-run-all clean build:site:main build:site:icons",
+    "build:site:main": "ng build site-main --prod && ng run site-main:server:production && npm run compile:server && npm run build:prerender -- --project site-main && cpy --parents --cwd=dist/site-main/deploy '**/*.*' '../../site'",
+    "build:site:icons": "ng build site-icons --prod && ng run site-icons:server:production && npm run compile:server && npm run build:prerender -- --project site-icons && cpy --parents --cwd=dist/site-icons/deploy '**/*.*' '../../site/icons'"
   },
   "dependencies": {
     "@angular/animations": "^7.0.2",
@@ -130,6 +135,7 @@
     "karma-scss-preprocessor": "^3.0.0",
     "lite-server": "^2.3.0",
     "make-dir": "^1.3.0",
+    "minimist": "^1.2.0",
     "ng-packagr": "^4.3.0",
     "node-sass": "^4.9.3",
     "node-sass-tilde-importer": "^1.0.2",

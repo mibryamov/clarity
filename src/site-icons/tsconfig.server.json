@@ -1,7 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/app",
+    "outDir": "../../out-tsc/app-server",
     "baseUrl": "./",
     "resolveJsonModule": true,
     "paths": {
@@ -10,5 +10,7 @@
       "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
     }
   },
-  "exclude": ["test.ts", "**/*.spec.ts"]
+  "angularCompilerOptions": {
+    "entryModule": "src/app/app.server.module#AppServerModule"
+  }
 }

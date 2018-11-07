@@ -13,7 +13,16 @@ import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { renderModuleFactory } from '@angular/platform-server';
 
 import * as express from 'express';
+import * as minimist from 'minimist';
 import { join } from 'path';
+
+const argv = minimist(process.argv.slice(2), {
+  default: {
+    project: 'site-main',
+  },
+});
+
+console.log(argv);
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -22,11 +31,11 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const SOURCE_FOLDER = join(process.cwd(), 'dist/site-main/browser');
-const DIST_FOLDER = join(process.cwd(), 'dist/site-main/deploy');
+const SOURCE_FOLDER = join(process.cwd(), 'dist', argv.project, 'browser');
+const DIST_FOLDER = join(process.cwd(), 'dist', argv.project, 'deploy');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/site-main/server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/${argv.project}/server/main`);
 
 del.sync(DIST_FOLDER);
 makeDir.sync(DIST_FOLDER);

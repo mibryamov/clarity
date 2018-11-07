@@ -7,7 +7,14 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
+import * as minimist from 'minimist';
 import { join } from 'path';
+
+const argv = minimist(process.argv.slice(2), {
+  default: {
+    project: 'site-main',
+  },
+});
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -16,10 +23,10 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist/site-main/browser');
+const DIST_FOLDER = join(process.cwd(), 'dist', argv.project, 'browser');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/site-main/server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/${argv.project}/server/main`);
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine(
