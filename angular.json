@@ -4,7 +4,7 @@
   "newProjectRoot": "src",
   "projects": {
     "dev": {
-      "root": "",
+      "root": "src/dev/",
       "projectType": "application",
       "prefix": "app",
       "architect": {
@@ -34,9 +34,13 @@
               "src/dev/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["node_modules"]
+              "includePaths": [
+                "node_modules"
+              ]
             },
-            "scripts": ["node_modules/@webcomponents/custom-elements/custom-elements.min.js"]
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/custom-elements.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -106,14 +110,19 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/dev/tsconfig.app.json", "src/dev/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/dev/tsconfig.app.json",
+              "src/dev/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     },
     "ks-app": {
-      "root": "",
+      "root": "src/ks-app/",
       "projectType": "application",
       "prefix": "ks",
       "architect": {
@@ -144,7 +153,9 @@
               "src/ks-app/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["node_modules"]
+              "includePaths": [
+                "node_modules"
+              ]
             },
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
@@ -187,8 +198,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/ks-app/tsconfig.app.json", "src/ks-app/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/ks-app/tsconfig.app.json",
+              "src/ks-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -220,8 +236,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/clr-angular/tsconfig.lint.json", "src/clr-angular/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/clr-angular/tsconfig.lint.json",
+              "src/clr-angular/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -245,8 +266,15 @@
             "main": "src/site-main/src/main.ts",
             "polyfills": "src/site-main/src/polyfills.ts",
             "tsConfig": "src/site-main/tsconfig.app.json",
-            "assets": ["src/site-main/src/favicon.ico", "src/site-main/src/assets"],
-            "styles": ["src/clr-angular/main.scss", "src/clr-icons/clr-icons.scss", "src/site-main/src/styles.css"],
+            "assets": [
+              "src/site-main/src/favicon.ico",
+              "src/site-main/src/assets"
+            ],
+            "styles": [
+              "src/clr-angular/main.scss",
+              "src/clr-icons/clr-icons.scss",
+              "src/site-main/src/styles.css"
+            ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js"
@@ -306,6 +334,105 @@
                 }
               ]
             }
+          }
+        }
+      }
+    },
+    "site-icons": {
+      "root": "src/site-icons/",
+      "sourceRoot": "src/site-icons/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/site-icons",
+            "index": "src/site-icons/src/index.html",
+            "main": "src/site-icons/src/main.ts",
+            "polyfills": "src/site-icons/src/polyfills.ts",
+            "tsConfig": "src/site-icons/tsconfig.app.json",
+            "assets": [
+              "src/site-icons/src/favicon.ico",
+              "src/site-icons/src/assets"
+            ],
+            "styles": [
+              "src/site-icons/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/site-icons/src/environments/environment.ts",
+                  "with": "src/site-icons/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "site-icons:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "site-icons:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "site-icons:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/site-icons/src/test.ts",
+            "polyfills": "src/site-icons/src/polyfills.ts",
+            "tsConfig": "src/site-icons/tsconfig.spec.json",
+            "karmaConfig": "src/site-icons/karma.conf.js",
+            "styles": [
+              "src/site-icons/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/site-icons/src/favicon.ico",
+              "src/site-icons/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/site-icons/tsconfig.app.json",
+              "src/site-icons/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
