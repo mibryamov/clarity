@@ -3,8 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/media-shapes';
-import '@clr/icons/shapes/social-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { MediaShapes } from '@clr/icons/shapes/media-shapes';
+import { SocialShapes } from '@clr/icons/shapes/social-shapes';
 
 import { Component } from '@angular/core';
 
@@ -18,6 +19,11 @@ import { VerticalNavCases } from '../vertical-nav-cases';
 export class VerticalNavStaticDemo {
   cases: any[];
   collapsed: boolean = false;
+
+  ngOnInit() {
+    ClarityIcons.add(MediaShapes);
+    ClarityIcons.add(SocialShapes);
+  }
 
   constructor(public verticalNavCases: VerticalNavCases) {
     this.cases = this.verticalNavCases.nonCollapsedMenus;

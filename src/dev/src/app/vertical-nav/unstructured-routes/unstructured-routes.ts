@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/technology-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
 
 import { Component } from '@angular/core';
 
@@ -20,6 +21,10 @@ export class UnstructuredRoutesDemo {
   case: any;
 
   groupExpand: boolean = true;
+
+  ngOnInit() {
+    ClarityIcons.add(TechnologyShapes);
+  }
 
   updateGroupExpand(event: any) {
     this.groupExpand = event;

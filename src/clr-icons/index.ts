@@ -5,11 +5,8 @@
  */
 import { ClarityIconsApi } from './clr-icons-api';
 import { ClarityIconElement } from './clr-icons-element';
-import { CoreShapes } from './shapes/core-shapes';
 
 const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
-
-clarityIcons.add(CoreShapes);
 
 interface Window {
   ClarityIcons: any;

@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/essential-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
 
 import { Component } from '@angular/core';
 
@@ -28,4 +29,8 @@ import { Component } from '@angular/core';
         <router-outlet></router-outlet>
     `,
 })
-export class VerticalNavDemo {}
+export class VerticalNavDemo {
+  ngOnInit() {
+    ClarityIcons.add(EssentialShapes);
+  }
+}

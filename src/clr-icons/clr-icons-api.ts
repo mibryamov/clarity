@@ -6,6 +6,7 @@
 
 import { IconAlias, IconShapeSources } from './interfaces/icon-interfaces';
 import { ShapeTemplateObserver } from './utils/shape-template-observer';
+import { CoreShapes } from './shapes/core-shapes';
 
 const iconShapeSources: IconShapeSources = {};
 
@@ -60,6 +61,16 @@ export class ClarityIconsApi {
           configurable: true,
         });
       }
+    }
+  }
+
+  init(options: any = { includeCore: true }) {
+    if (!ClarityIconsApi.singleInstance) {
+      ClarityIconsApi.singleInstance = new ClarityIconsApi();
+    }
+
+    if (options.includeCore) {
+      ClarityIconsApi.singleInstance.add(CoreShapes);
     }
   }
 

@@ -5,7 +5,6 @@
  */
 
 import { ClarityIcons } from './index';
-import { CoreShapes } from './shapes/core-shapes';
 import { changeHandlerCallbacks } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
@@ -61,16 +60,13 @@ export function testAllShapesRequiredAttributes(shapes: any): void {
 }
 
 export function resetShapes(): void {
-  // Removes all shapes from Clarity Icons, but adds the icons from CoreShapes back at the end
-  // because the CoreShapes icons are added by default by ClarityIcons.
+  // Removes all shapes from Clarity Icons
 
   for (const shapeName in ClarityIcons.get()) {
     if (ClarityIcons.get().hasOwnProperty(shapeName)) {
       delete ClarityIcons.get()[shapeName];
     }
   }
-
-  ClarityIcons.add(CoreShapes);
 }
 
 export function resetCallbacks(): void {

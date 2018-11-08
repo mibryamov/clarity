@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/essential-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
 
 import { Component } from '@angular/core';
 
@@ -39,6 +40,10 @@ export class DatagridKitchenSinkDemo {
   slowLoad = false;
   showDate = true;
   showId = true;
+
+  ngOnInit() {
+    ClarityIcons.add(EssentialShapes);
+  }
 
   toggleItems() {
     if (this.variableLengthUsers.length === 5) {

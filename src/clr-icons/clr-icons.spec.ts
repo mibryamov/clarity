@@ -16,15 +16,15 @@ import {
 } from './helpers.spec';
 import { ClarityIcons } from './index';
 import { AllShapes } from './shapes/all-shapes';
-import { ChartShapes } from './shapes/chart-shapes';
-import { CommerceShapes } from './shapes/commerce-shapes';
-import { CoreShapes } from './shapes/core-shapes';
-import { EssentialShapes } from './shapes/essential-shapes';
-import { MediaShapes } from './shapes/media-shapes';
-import { SocialShapes } from './shapes/social-shapes';
-import { TechnologyShapes } from './shapes/technology-shapes';
-import { TextEditShapes } from './shapes/text-edit-shapes';
-import { TravelShapes } from './shapes/travel-shapes';
+import { ChartShapes, ClrShapeBarChart } from './shapes/chart-shapes';
+import { ClrShapeECheck, CommerceShapes } from './shapes/commerce-shapes';
+import { CoreShapes, ClrShapeCheck } from './shapes/core-shapes';
+import { ClrShapePencil, EssentialShapes } from './shapes/essential-shapes';
+import { ClrShapePlay, MediaShapes } from './shapes/media-shapes';
+import { ClrShapeStar, SocialShapes } from './shapes/social-shapes';
+import { ClrShapeCPU, TechnologyShapes } from './shapes/technology-shapes';
+import { ClrShapeBold, TextEditShapes } from './shapes/text-edit-shapes';
+import { ClrShapeCar, TravelShapes } from './shapes/travel-shapes';
 import { changeHandlerCallbacks } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
@@ -35,14 +35,15 @@ import { clrIconSVG } from './utils/svg-tag-generator';
 // This is a base test object for all sets
 /* tslint:disable:no-string-literal */
 const ALL_SETS = [
-  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: { 'e-check': CommerceShapes['e-check'] } },
-  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: { pencil: EssentialShapes['pencil'] } },
-  { name: 'Social shapes', shapes: SocialShapes, randomShape: { star: SocialShapes['star'] } },
-  { name: 'Media shapes', shapes: MediaShapes, randomShape: { play: MediaShapes['play'] } },
-  { name: 'Travel shapes', shapes: TravelShapes, randomShape: { car: TravelShapes['car'] } },
-  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: { cpu: TechnologyShapes['cpu'] } },
-  { name: 'Chart shapes', shapes: ChartShapes, randomShape: { 'bar-chart': ChartShapes['bar-chart'] } },
-  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: { bold: TextEditShapes['bold'] } },
+  { name: 'Core shapes', shapes: CoreShapes, randomShape: ClrShapeCheck },
+  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: ClrShapeECheck },
+  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: ClrShapePencil },
+  { name: 'Social shapes', shapes: SocialShapes, randomShape: ClrShapeStar },
+  { name: 'Media shapes', shapes: MediaShapes, randomShape: ClrShapePlay },
+  { name: 'Travel shapes', shapes: TravelShapes, randomShape: ClrShapeCar },
+  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: ClrShapeCPU },
+  { name: 'Chart shapes', shapes: ChartShapes, randomShape: ClrShapeBarChart },
+  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: ClrShapeBold },
 ];
 /* tslint:enable:no-string-literal */
 
@@ -55,6 +56,10 @@ describe('ClarityIcons', () => {
     it('should set a global object', () => {
       expect(window.ClarityIcons).not.toBeUndefined();
     });
+
+    it('should not add any icons by default', () => {
+      expect(Object.keys(ClarityIcons.get()).length).toBe(0);
+    });
   });
 
   describe('ClarityIconsApi.get()', () => {
@@ -63,7 +68,7 @@ describe('ClarityIcons', () => {
         ClarityIcons.add(shapeSet.shapes);
       }
 
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
@@ -71,24 +76,22 @@ describe('ClarityIcons', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.randomShape);
       }
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.randomShape));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.randomShape));
 
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
     for (const shapeSet of ALL_SETS) {
-      it(`should return shapes from ${shapeSet.name} and Core shapes if ${
-        shapeSet.name
-      } set is individually added in.`, () => {
+      it(`should return shapes from ${shapeSet.name} if ${shapeSet.name} set is individually added in.`, () => {
         ClarityIcons.add(shapeSet.shapes);
-        const currentAllShapes = Object.assign({}, CoreShapes, shapeSet.shapes);
+        const currentAllShapes = Object.assign({}, shapeSet.shapes);
         testAllShapes(ClarityIcons, currentAllShapes);
       });
     }
 
     it('should return all icons from all sets if the AllShapes set is added in', () => {
       ClarityIcons.add(AllShapes);
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
@@ -309,6 +312,7 @@ describe('ClarityIcons', () => {
   describe('ClarityIcon Custom Element', () => {
     beforeEach(() => {
       resetCallbacks();
+      ClarityIcons.init();
     });
 
     it('should insert the SVG markup', () => {
@@ -658,7 +662,7 @@ describe('ClarityIcons', () => {
     }
 
     it('No two shapes should have the same name unless their templates are identical', () => {
-      const allShapeSets: any = [CoreShapes].concat(ALL_SETS.map(set => set.shapes));
+      const allShapeSets: any = [].concat(ALL_SETS.map(set => set.shapes));
       const shapesTested: any = {};
       const duplicatesFound: string[] = [];
 
@@ -681,7 +685,7 @@ describe('ClarityIcons', () => {
     });
 
     it('each icons should have the required attributes only once in their templates', () => {
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapesRequiredAttributes(currentAllShapes);
     });
   });

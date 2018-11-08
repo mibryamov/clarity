@@ -3,8 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/social-shapes';
-import '@clr/icons/shapes/essential-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
+import { SocialShapes } from '@clr/icons/shapes/social-shapes';
+
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -15,6 +17,11 @@ export class FormsReactiveDemo {
     container: new FormControl(''),
     required: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/asdfasdf/)]),
   });
+
+  ngOnInit() {
+    ClarityIcons.add(EssentialShapes);
+    ClarityIcons.add(SocialShapes);
+  }
 
   submit() {
     console.log(this);

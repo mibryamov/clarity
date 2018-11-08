@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-
+import { ClarityIcons } from '@clr/icons';
 import { ChartShapes } from '@clr/icons/shapes/chart-shapes';
 import { CommerceShapes } from '@clr/icons/shapes/commerce-shapes';
 import { CoreShapes } from '@clr/icons/shapes/core-shapes';
@@ -25,6 +25,18 @@ export class IconSelectionDemo {
   allSetsLink = this.commonPath + 'all-shapes.zip';
 
   previewClasses: any = { 'is-solid': false, 'has-alert': false, 'has-badge': false };
+
+  constructor() {
+    ClarityIcons.add(CoreShapes);
+    ClarityIcons.add(CommerceShapes);
+    ClarityIcons.add(EssentialShapes);
+    ClarityIcons.add(MediaShapes);
+    ClarityIcons.add(SocialShapes);
+    ClarityIcons.add(TechnologyShapes);
+    ClarityIcons.add(TravelShapes);
+    ClarityIcons.add(ChartShapes);
+    ClarityIcons.add(TextEditShapes);
+  }
 
   onChangeSolid(event: any): void {
     this.previewClasses['is-solid'] = event.target.checked;

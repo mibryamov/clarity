@@ -3,11 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/chart-shapes';
-import '@clr/icons/shapes/essential-shapes';
-import '@clr/icons/shapes/technology-shapes';
-import '@clr/icons/shapes/travel-shapes';
-import '@clr/icons/shapes/social-shapes';
+import { ClarityIcons } from '@clr/icons';
+import { ChartShapes } from '@clr/icons/shapes/chart-shapes';
+import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
+import { SocialShapes } from '@clr/icons/shapes/social-shapes';
+import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
+import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
 
 import { Component, Input } from '@angular/core';
 
@@ -18,6 +19,14 @@ import { Component, Input } from '@angular/core';
 })
 export class TreeViewDynamicDemo {
   @Input('clrDemoShowHalf') showHalf: boolean = true;
+
+  ngOnInit() {
+    ClarityIcons.add(ChartShapes);
+    ClarityIcons.add(EssentialShapes);
+    ClarityIcons.add(SocialShapes);
+    ClarityIcons.add(TechnologyShapes);
+    ClarityIcons.add(TravelShapes);
+  }
 
   rootDirectory: any[] = [
     {
