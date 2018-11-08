@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { clrIconSVG } from '../utils/svg-tag-generator';
-import { ClrShapeCalendar, ClrShapeCalendarSVG } from './core-shapes';
+import { ClrShapeCalendar, ClrShapeCalendarSVG, ClrShapeEvent } from './core';
 import { descriptorConfig } from '../utils/descriptor-config';
 
 /* tslint:disable:variable-name */
@@ -192,6 +192,7 @@ export const SocialShapes: any = {
   ...ClrShapeBookmark,
   ...ClrShapeEnvelope,
   ...ClrShapeCalendar,
+  ...ClrShapeEvent,
   ...ClrShapeTasks,
   ...ClrShapeFlag,
   ...ClrShapeInbox,

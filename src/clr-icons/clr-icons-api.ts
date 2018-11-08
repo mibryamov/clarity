@@ -6,7 +6,7 @@
 
 import { IconAlias, IconShapeSources } from './interfaces/icon-interfaces';
 import { ShapeTemplateObserver } from './utils/shape-template-observer';
-import { CoreShapes } from './shapes/core-shapes';
+import { CoreShapes } from './shapes/core';
 
 const iconShapeSources: IconShapeSources = {};
 

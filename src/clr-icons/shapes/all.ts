@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ChartShapes } from './chart-shapes';
-import { CommerceShapes } from './commerce-shapes';
-import { CoreShapes } from './core-shapes';
-import { EssentialShapes } from './essential-shapes';
-import { MediaShapes } from './media-shapes';
-import { SocialShapes } from './social-shapes';
-import { TechnologyShapes } from './technology-shapes';
-import { TextEditShapes } from './text-edit-shapes';
-import { TravelShapes } from './travel-shapes';
+import { ChartShapes } from './chart';
+import { CommerceShapes } from './commerce';
+import { CoreShapes } from './core';
+import { EssentialShapes } from './essential';
+import { MediaShapes } from './media';
+import { SocialShapes } from './social';
+import { TechnologyShapes } from './technology';
+import { TextEditShapes } from './text-edit';
+import { TravelShapes } from './travel';
 
 const allShapesSets = [
   CoreShapes,

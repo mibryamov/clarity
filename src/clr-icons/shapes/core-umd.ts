@@ -18,12 +18,10 @@ import {
   ClrShapeTimesSVG,
   ClrShapeUserSVG,
   CoreShapes,
-} from './core-shapes';
+} from './core';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-/* tslint:disable:variable-name */
-
-export * from './core-shapes';
+export * from './core';
 
 Object.defineProperty(CoreShapes, 'house', descriptorConfig(ClrShapeHomeSVG));
 Object.defineProperty(CoreShapes, 'settings', descriptorConfig(ClrShapeCogSVG));

@@ -3,12 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TextEditShapes } from './text-edit-shapes';
+import { MediaShapes } from './media';
 
-/* tslint:disable:variable-name */
+interface Window {
+  ClarityIcons: any;
+}
 
-export * from './text-edit-shapes';
+declare var window: Window;
+
+export * from './media';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TextEditShapes);
+  window.ClarityIcons.add(MediaShapes);
 }

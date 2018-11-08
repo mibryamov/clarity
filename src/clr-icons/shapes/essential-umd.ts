@@ -21,7 +21,7 @@ import {
   ClrShapeTimesCircleSVG,
   ClrShapeUsersSVG,
   EssentialShapes,
-} from './essential-shapes';
+} from './essential';
 import { descriptorConfig } from '../utils/descriptor-config';
 
 interface Window {
@@ -30,9 +30,7 @@ interface Window {
 
 declare var window: Window;
 
-/* tslint:disable:variable-name */
-
-export * from './essential-shapes';
+export * from './essential';
 
 Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(ClrShapePencilSVG));
 Object.defineProperty(EssentialShapes, 'note-edit', descriptorConfig(ClrShapeNoteSVG));

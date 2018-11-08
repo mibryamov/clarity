@@ -15,16 +15,16 @@ import {
   testAllShapesRequiredAttributes,
 } from './helpers.spec';
 import { ClarityIcons } from './index';
-import { AllShapes } from './shapes/all-shapes';
-import { ChartShapes, ClrShapeBarChart } from './shapes/chart-shapes';
-import { ClrShapeECheck, CommerceShapes } from './shapes/commerce-shapes';
-import { CoreShapes, ClrShapeCheck } from './shapes/core-shapes';
-import { ClrShapePencil, EssentialShapes } from './shapes/essential-shapes';
-import { ClrShapePlay, MediaShapes } from './shapes/media-shapes';
-import { ClrShapeStar, SocialShapes } from './shapes/social-shapes';
-import { ClrShapeCPU, TechnologyShapes } from './shapes/technology-shapes';
-import { ClrShapeBold, TextEditShapes } from './shapes/text-edit-shapes';
-import { ClrShapeCar, TravelShapes } from './shapes/travel-shapes';
+import { AllShapes } from './shapes/all';
+import { ChartShapes, ClrShapeBarChart } from './shapes/chart';
+import { ClrShapeECheck, CommerceShapes } from './shapes/commerce';
+import { CoreShapes, ClrShapeCheck } from './shapes/core';
+import { ClrShapePencil, EssentialShapes } from './shapes/essential';
+import { ClrShapePlay, MediaShapes } from './shapes/media';
+import { ClrShapeStar, SocialShapes } from './shapes/social';
+import { ClrShapeCPU, TechnologyShapes } from './shapes/technology';
+import { ClrShapeBold, TextEditShapes } from './shapes/text-edit';
+import { ClrShapeCar, TravelShapes } from './shapes/travel';
 import { changeHandlerCallbacks } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 

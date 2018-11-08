@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { ClarityIcons } from '@clr/icons';
-import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
+import { EssentialShapes } from '@clr/icons/shapes/essential';
 
 import { Component } from '@angular/core';
 

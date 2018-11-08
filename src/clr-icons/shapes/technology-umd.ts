@@ -13,7 +13,7 @@ import {
   ClrShapeRulerPencilSVG,
   ClrShapeTerminalSVG,
   TechnologyShapes,
-} from './technology-shapes';
+} from './technology';
 import { descriptorConfig } from '../utils/descriptor-config';
 
 interface Window {
@@ -22,9 +22,7 @@ interface Window {
 
 declare var window: Window;
 
-/* tslint:disable:variable-name */
-
-export * from './technology-shapes';
+export * from './technology';
 
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(ClrShapeHostSVG));
 Object.defineProperty(TechnologyShapes, 'command', descriptorConfig(ClrShapeTerminalSVG));

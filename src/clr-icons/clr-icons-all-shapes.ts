@@ -5,7 +5,7 @@
  */
 
 import { ClarityIcons } from './index';
-import { AllShapes } from './shapes/all-shapes';
+import { AllShapes } from './shapes/all';
 
 ClarityIcons.add(AllShapes);
 

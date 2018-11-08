@@ -3,15 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChartShapes, ClrShapeLineChartSVG } from './chart-shapes';
+import { ClrShapePiggyBankSVG, CommerceShapes } from './commerce';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-/* tslint:disable:variable-name */
+export * from './commerce';
 
-export * from './chart-shapes';
-
-Object.defineProperty(ChartShapes, 'analytics', descriptorConfig(ClrShapeLineChartSVG));
+Object.defineProperty(CommerceShapes, 'savings', descriptorConfig(ClrShapePiggyBankSVG));
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ChartShapes);
+  window.ClarityIcons.add(CommerceShapes);
 }

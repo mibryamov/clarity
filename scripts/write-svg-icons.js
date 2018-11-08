@@ -177,12 +177,9 @@ let makeSVG = (shapeTitle, shapeContent) => {
 ${closingTag}`;
 };
 
-let convertToCamelCase = kebabCase => {
-  // will convert core-shapes into CoreShapes
-  return kebabCase
-    .split('-')
-    .map(splitPart => splitPart.charAt(0).toUpperCase() + splitPart.slice(1))
-    .join('');
+let convertToExportedName = setName => {
+  // will convert core into CoreShapes
+  return setName.charAt(0).toUpperCase() + setName.slice(1) + 'Shapes';
 };
 
 //use shapes from this directory
@@ -191,7 +188,7 @@ const SOURCE_PATH = path.join(__dirname, '../dist/clr-icons/shapes');
 let makeSVGset = (setName, callback) => {
   let importSet = require(SOURCE_PATH + '/' + setName + '.js');
 
-  let exportedName = convertToCamelCase(setName);
+  let exportedName = convertToExportedName(setName);
 
   let setShapes = importSet[exportedName];
 

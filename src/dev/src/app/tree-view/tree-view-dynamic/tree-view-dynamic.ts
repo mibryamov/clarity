@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { ClarityIcons } from '@clr/icons';
-import { ChartShapes } from '@clr/icons/shapes/chart-shapes';
-import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
-import { SocialShapes } from '@clr/icons/shapes/social-shapes';
-import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
-import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
+import { ChartShapes } from '@clr/icons/shapes/chart';
+import { EssentialShapes } from '@clr/icons/shapes/essential';
+import { SocialShapes } from '@clr/icons/shapes/social';
+import { TechnologyShapes } from '@clr/icons/shapes/technology';
+import { TravelShapes } from '@clr/icons/shapes/travel';
 
 import { Component, Input } from '@angular/core';
 
