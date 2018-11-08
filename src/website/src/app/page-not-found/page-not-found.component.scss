@@ -1,0 +1,21 @@
+.error-block {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+
+  img {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    height: 286px;
+    opacity: 0.28;
+  }
+
+  .error-code {
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 1em;
+    opacity: 0.5;
+    margin-top: 0;
+  }
+}

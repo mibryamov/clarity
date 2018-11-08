@@ -34,18 +34,22 @@ copySync(SOURCE_FOLDER, DIST_FOLDER);
 
 const index = readFileSync(join(DIST_FOLDER, 'index.html'), 'utf8');
 
-renderModuleFactory(AppServerModuleNgFactory, {
-  document: index,
-  url: '/',
-  extraProviders: [provideModuleMap(LAZY_MODULE_MAP)],
-}).then(
-  html => {
-    writeFileSync(join(DIST_FOLDER, 'index.html'), html);
-    // spinner.succeed();
-    // return url;
-  },
-  error => {
-    // spinner.fail('Unable to render ' + url);
-    console.log(error);
-  }
-);
+const pages = ['/', '/engage', '/icons', '/icons/api', '/icons/get-started', '/icons/how-to-use'];
+
+pages.forEach(page => {
+  renderModuleFactory(AppServerModuleNgFactory, {
+    document: index,
+    url: page,
+    extraProviders: [provideModuleMap(LAZY_MODULE_MAP)],
+  }).then(
+    html => {
+      writeFileSync(join(DIST_FOLDER, 'index.html'), html);
+      // spinner.succeed();
+      // return url;
+    },
+    error => {
+      // spinner.fail('Unable to render ' + url);
+      console.log(error);
+    }
+  );
+});

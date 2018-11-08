@@ -12,8 +12,7 @@ const routes: Routes = [
     component: IconsComponent,
     children: [
       { path: '', component: IconsSetsComponent },
-      // {path: "", redirectTo: "icon-sets"},
-      { path: 'clarity-icons', component: IconsGetStartedComponent },
+      { path: 'get-started', component: IconsGetStartedComponent },
       { path: 'how-to-use', component: IconsHowToUseComponent },
       { path: 'api', component: IconsApiComponent },
     ],
