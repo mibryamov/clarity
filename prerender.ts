@@ -22,11 +22,11 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const SOURCE_FOLDER = join(process.cwd(), 'dist/site-main/browser');
-const DIST_FOLDER = join(process.cwd(), 'dist/site-main/deploy');
+const SOURCE_FOLDER = join(process.cwd(), 'dist/website/browser');
+const DIST_FOLDER = join(process.cwd(), 'dist/website/deploy');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/site-main/server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/website/server/main');
 
 del.sync(DIST_FOLDER);
 makeDir.sync(DIST_FOLDER);

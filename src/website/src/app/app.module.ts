@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'community', pathMatch: 'full', redirectTo: 'engage' },
   { path: 'engage', component: EngageComponent },
+  { path: 'icons', loadChildren: './icons/icons.module#IconsModule' },
 ];
 
 @NgModule({

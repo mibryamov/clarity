@@ -16,6 +16,6 @@ request.get(
     },
   },
   (_err, _response, data) => {
-    fs.writeFileSync(path.join(__dirname, '../src/site-main/src/data/github.json'), data);
+    fs.writeFileSync(path.join(__dirname, '../src/website/src/data/github.json'), data);
   }
 );

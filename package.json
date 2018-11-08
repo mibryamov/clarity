@@ -56,7 +56,7 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build site-main --prod && ng run site-main:server:production",
+    "build:client-and-server-bundles": "ng build website --prod && ng run website:server:production",
     "build:prerender": "node dist/prerender",
     "ssr": "npm-run-all build:ssr build:prerender",
     "site:contributors": "node ./scripts/sync-contributors.js"
@@ -80,6 +80,7 @@
     "@webcomponents/custom-elements": "^1.0.0",
     "core-js": "^2.5.5",
     "express": "^4.15.2",
+    "jump.js": "^1.0.2",
     "prismjs": "^1.6.0",
     "rxjs": "6.3.3",
     "web-animations-js": "^2.3.1",

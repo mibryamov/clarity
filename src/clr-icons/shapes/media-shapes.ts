@@ -163,7 +163,3 @@ export const MediaShapes: any = {
   microphone: ClrShapeMicrophone,
   'microphone-mute': ClrShapeMicrophoneMute,
 };
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(MediaShapes);
-}

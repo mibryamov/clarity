@@ -235,7 +235,3 @@ export const ChartShapes: any = {
 };
 
 Object.defineProperty(ChartShapes, 'analytics', descriptorConfig(ChartShapes['line-chart']));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ChartShapes);
-}

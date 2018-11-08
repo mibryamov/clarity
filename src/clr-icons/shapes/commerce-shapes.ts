@@ -189,7 +189,3 @@ export const CommerceShapes: any = {
 };
 
 Object.defineProperty(CommerceShapes, 'savings', descriptorConfig(CommerceShapes['piggy-bank']));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(CommerceShapes);
-}

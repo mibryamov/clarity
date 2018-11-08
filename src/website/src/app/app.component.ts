@@ -7,6 +7,6 @@ import * as PackageJSON from '../../../../package.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'site-main';
+  title = 'website';
   package = PackageJSON;
 }

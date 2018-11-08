@@ -226,9 +226,9 @@
         }
       }
     },
-    "site-main": {
-      "root": "src/site-main/",
-      "sourceRoot": "src/site-main/src",
+    "website": {
+      "root": "src/website/",
+      "sourceRoot": "src/website/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -240,13 +240,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/site-main/browser",
-            "index": "src/site-main/src/index.html",
-            "main": "src/site-main/src/main.ts",
-            "polyfills": "src/site-main/src/polyfills.ts",
-            "tsConfig": "src/site-main/tsconfig.app.json",
-            "assets": ["src/site-main/src/favicon.ico", "src/site-main/src/assets"],
-            "styles": ["src/clr-angular/main.scss", "src/clr-icons/clr-icons.scss", "src/site-main/src/styles.css"],
+            "outputPath": "dist/website/browser",
+            "index": "src/website/src/index.html",
+            "main": "src/website/src/main.ts",
+            "polyfills": "src/website/src/polyfills.ts",
+            "tsConfig": "src/website/tsconfig.app.json",
+            "assets": ["src/website/src/favicon.ico", "src/website/src/assets"],
+            "styles": [
+              "src/clr-angular/main.scss",
+              "src/clr-icons/clr-icons.scss",
+              "src/website/src/styles/styles.scss"
+            ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js"
@@ -256,8 +260,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/site-main/src/environments/environment.ts",
-                  "with": "src/site-main/src/environments/environment.prod.ts"
+                  "replace": "src/website/src/environments/environment.ts",
+                  "with": "src/website/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -282,27 +286,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "site-main:build"
+            "browserTarget": "website:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "site-main:build:production"
+              "browserTarget": "website:build:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/site-main/server",
-            "main": "src/site-main/src/main.server.ts",
-            "tsConfig": "src/site-main/tsconfig.server.json"
+            "outputPath": "dist/website/server",
+            "main": "src/website/src/main.server.ts",
+            "tsConfig": "src/website/tsconfig.server.json"
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/site-main/src/environments/environment.ts",
-                  "with": "src/site-main/src/environments/environment.prod.ts"
+                  "replace": "src/website/src/environments/environment.ts",
+                  "with": "src/website/src/environments/environment.prod.ts"
                 }
               ]
             }

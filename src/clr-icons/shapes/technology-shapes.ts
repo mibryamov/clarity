@@ -1215,7 +1215,3 @@ Object.defineProperty(TechnologyShapes, 'disconnected', descriptorConfig(Technol
 Object.defineProperty(TechnologyShapes, 'receiver', descriptorConfig(TechnologyShapes['phone-handset']));
 Object.defineProperty(TechnologyShapes, 'design', descriptorConfig(TechnologyShapes['ruler-pencil']));
 Object.defineProperty(TechnologyShapes, 'dna', descriptorConfig(TechnologyShapes.helix));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TechnologyShapes);
-}

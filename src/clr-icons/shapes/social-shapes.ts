@@ -200,7 +200,3 @@ export const SocialShapes: any = {
 Object.defineProperty(SocialShapes, 'favorite', descriptorConfig(SocialShapes.star));
 Object.defineProperty(SocialShapes, 'email', descriptorConfig(SocialShapes.envelope));
 Object.defineProperty(SocialShapes, 'date', descriptorConfig(SocialShapes.calendar));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(SocialShapes);
-}

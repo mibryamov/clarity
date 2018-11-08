@@ -1015,7 +1015,3 @@ Object.defineProperty(EssentialShapes, 'attachment', descriptorConfig(EssentialS
 Object.defineProperty(EssentialShapes, 'attachment', descriptorConfig(EssentialShapes.paperclip));
 Object.defineProperty(EssentialShapes, 'resize-down', descriptorConfig(EssentialShapes.shrink));
 Object.defineProperty(EssentialShapes, 'resize-up', descriptorConfig(EssentialShapes.resize));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(EssentialShapes);
-}

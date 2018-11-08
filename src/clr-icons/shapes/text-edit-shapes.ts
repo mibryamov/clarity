@@ -97,7 +97,3 @@ export const TextEditShapes: any = {
   'align-top': ClrShapeAlignTop,
   language: ClrShapeLanguage,
 };
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TextEditShapes);
-}

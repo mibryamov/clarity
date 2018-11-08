@@ -114,7 +114,3 @@ export const TravelShapes: any = {
 
 Object.defineProperty(TravelShapes, 'plane', descriptorConfig(TravelShapes.airplane));
 Object.defineProperty(TravelShapes, 'auto', descriptorConfig(TravelShapes.car));
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TravelShapes);
-}
