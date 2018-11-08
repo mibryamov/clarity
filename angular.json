@@ -247,11 +247,14 @@
             "tsConfig": "src/website/tsconfig.app.json",
             "assets": ["src/website/src/favicon.ico", "src/website/src/assets"],
             "styles": [
+              "node_modules/prismjs/themes/prism-solarizedlight.css",
               "src/clr-angular/main.scss",
               "src/clr-icons/clr-icons.scss",
               "src/website/src/styles/styles.scss"
             ],
             "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.min.js",
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js"
             ]

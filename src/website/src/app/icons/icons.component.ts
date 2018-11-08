@@ -71,6 +71,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
   private _scrollEvent: any;
 
   private _subscriptions: Subscription[] = [];
+  private interval: any;
 
   constructor(
     private _el: ElementRef,
@@ -81,7 +82,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
   ) {
     this._subscriptions.push(
       this._router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
-        this.isOnIconSetsRoute = _router.isActive('/icons/icon-sets', false);
+        this.isOnIconSetsRoute = _router.isActive('/icons', false);
 
         // reset search input value when route changes to another pages
         if (!this.isOnIconSetsRoute) this.resetSearchBar();
@@ -89,7 +90,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
     );
 
     if (isPlatformBrowser(this.platformId)) {
-      setInterval(() => {
+      this.interval = setInterval(() => {
         this.blinkIconsRandomly = [
           Math.floor(Math.random() * this.blinkIconsFromEssentialSet.length),
           Math.floor(Math.random() * this.blinkIconsFromEssentialSet.length),
@@ -148,6 +149,9 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
       this._scrollEvent();
     }
     this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+    if (this.interval) {
+      this.interval.cancel();
+    }
   }
 
   hasResponsivenessTriggered() {
