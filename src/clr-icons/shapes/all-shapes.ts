@@ -36,8 +36,4 @@ for (const set of allShapesSets) {
   }
 }
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(allShapes);
-}
-
 export { allShapes as AllShapes };

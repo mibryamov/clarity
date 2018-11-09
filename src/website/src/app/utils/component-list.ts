@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-const COMPONENT_JSON = require('../../settings/componentlist.json');
+import * as COMPONENT_JSON from '../../assets/components.json';
 
 export const COMPONENT_MAP = new Map();
 

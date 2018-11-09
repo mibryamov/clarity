@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
+  version: '1.0',
+  versions_url: '/assets/versions.json',
   current: {
     version: '0.13.8',
     major: '0.13',

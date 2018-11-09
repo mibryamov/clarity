@@ -150,7 +150,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
     }
     this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     if (this.interval) {
-      this.interval.cancel();
+      clearInterval(this.interval);
     }
   }
 

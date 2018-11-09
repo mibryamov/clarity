@@ -138,6 +138,7 @@
     "postcss-cli": "^5.0.0",
     "prettier": "1.12.1",
     "pretty-quick": "^1.6.0",
+    "raw-loader": "^0.5.1",
     "replace": "^1.0.0",
     "shelljs": "^0.8.1",
     "source-map": "^0.7.2",
