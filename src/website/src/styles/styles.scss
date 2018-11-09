@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'clarity-imports';
+
+$clrweb-altGray: #f3f5f8;
+
+@import 'clarityHelpers.scss';
+@import 'global.scss';
+
+@import 'syntax-highlighting.scss';
+@import 'header.scss';
+@import 'footer.scss';
+// @import 'home.scss';
+@import 'icons.scss';
+@import 'get-started.scss';
+@import 'whats-new.scss';
+@import 'components.scss';
+// @import 'community.scss';
+@import 'tabs.scss';
+@import 'code';
+@import 'labels';
+
+@import 'error-pages.scss';

@@ -34,7 +34,16 @@ copySync(SOURCE_FOLDER, DIST_FOLDER);
 
 const index = readFileSync(join(DIST_FOLDER, 'index.html'), 'utf8');
 
-const pages = ['/', '/engage', '/icons', '/icons/api', '/icons/get-started', '/icons/how-to-use'];
+const pages = [
+  '/',
+  '/engage',
+  '/icons',
+  '/icons/api',
+  '/icons/get-started',
+  '/icons/how-to-use',
+  '/releases',
+  '/documentation',
+];
 
 pages.forEach(page => {
   renderModuleFactory(AppServerModuleNgFactory, {
