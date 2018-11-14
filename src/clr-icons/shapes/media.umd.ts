@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { MediaShapes } from './media';
 
-import { ClarityIconsApi } from './api';
-
-export const ClarityIcons = ClarityIconsApi.instance;
-export * from './shapes/index';
+if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
+  window.ClarityIcons.add(MediaShapes);
+}

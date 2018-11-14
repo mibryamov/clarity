@@ -21,8 +21,6 @@ import {
 } from './core';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-export * from './core';
-
 Object.defineProperty(CoreShapes, 'house', descriptorConfig(ClrShapeHomeSVG));
 Object.defineProperty(CoreShapes, 'settings', descriptorConfig(ClrShapeCogSVG));
 Object.defineProperty(CoreShapes, 'success', descriptorConfig(ClrShapeCheckSVG));

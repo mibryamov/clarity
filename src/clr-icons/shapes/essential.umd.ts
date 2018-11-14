@@ -24,14 +24,6 @@ import {
 } from './essential';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-interface Window {
-  ClarityIcons: any;
-}
-
-declare var window: Window;
-
-export * from './essential';
-
 Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(ClrShapePencilSVG));
 Object.defineProperty(EssentialShapes, 'note-edit', descriptorConfig(ClrShapeNoteSVG));
 Object.defineProperty(EssentialShapes, 'group', descriptorConfig(ClrShapeUsersSVG));

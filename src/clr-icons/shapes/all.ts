@@ -14,26 +14,14 @@ import { TechnologyShapes } from './technology';
 import { TextEditShapes } from './text-edit';
 import { TravelShapes } from './travel';
 
-const allShapesSets = [
-  CoreShapes,
-  CommerceShapes,
-  EssentialShapes,
-  MediaShapes,
-  SocialShapes,
-  TechnologyShapes,
-  TravelShapes,
-  ChartShapes,
-  TextEditShapes,
-];
-
-const allShapes: any = {};
-
-for (const set of allShapesSets) {
-  for (const shape in set) {
-    if (set.hasOwnProperty(shape)) {
-      allShapes[shape] = set[shape];
-    }
-  }
-}
-
-export { allShapes as AllShapes };
+export const AllShapes = {
+  ...CoreShapes,
+  ...CommerceShapes,
+  ...EssentialShapes,
+  ...MediaShapes,
+  ...SocialShapes,
+  ...TechnologyShapes,
+  ...TravelShapes,
+  ...ChartShapes,
+  ...TextEditShapes,
+};

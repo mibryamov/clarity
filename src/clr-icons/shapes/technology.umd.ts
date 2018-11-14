@@ -16,14 +16,6 @@ import {
 } from './technology';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-interface Window {
-  ClarityIcons: any;
-}
-
-declare var window: Window;
-
-export * from './technology';
-
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(ClrShapeHostSVG));
 Object.defineProperty(TechnologyShapes, 'command', descriptorConfig(ClrShapeTerminalSVG));
 Object.defineProperty(TechnologyShapes, 'mobile-phone', descriptorConfig(ClrShapeMobileSVG));

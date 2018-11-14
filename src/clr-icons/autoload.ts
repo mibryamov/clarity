@@ -5,6 +5,8 @@
  */
 
 import { ClarityIconsApi } from './api';
+import { AllShapes } from './shapes/all';
 
-export const ClarityIcons = ClarityIconsApi.instance;
-export * from './shapes/index';
+const ClarityIcons = ClarityIconsApi.instance;
+ClarityIcons.init();
+ClarityIcons.add(AllShapes);

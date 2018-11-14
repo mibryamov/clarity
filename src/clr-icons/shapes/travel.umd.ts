@@ -3,13 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChartShapes, ClrShapeLineChartSVG } from './chart';
+import { ClrShapeAirplaneSVG, ClrShapeCarSVG, TravelShapes } from './travel';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-export * from './chart';
-
-Object.defineProperty(ChartShapes, 'analytics', descriptorConfig(ClrShapeLineChartSVG));
+Object.defineProperty(TravelShapes, 'plane', descriptorConfig(ClrShapeAirplaneSVG));
+Object.defineProperty(TravelShapes, 'auto', descriptorConfig(ClrShapeCarSVG));
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ChartShapes);
+  window.ClarityIcons.add(TravelShapes);
 }

@@ -3,16 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { MediaShapes } from './media';
-
-interface Window {
-  ClarityIcons: any;
-}
-
-declare var window: Window;
-
-export * from './media';
+import { AllShapes } from './all';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(MediaShapes);
+  window.ClarityIcons.add(AllShapes);
 }
