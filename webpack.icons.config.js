@@ -10,13 +10,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    // index: './src/clr-icons/index.ts',
-    // 'interfaces/icon-interfaces': './src/clr-icons/interfaces/icon-interfaces.ts',
-    // 'utils/descriptor-config': './src/clr-icons/utils/descriptor-config.ts',
-    // 'clr-icons-api': './src/clr-icons/clr-icons-api.ts',
-    // 'clr-icons-element': './src/clr-icons/clr-icons-element.ts',
-    // 'clr-icons-base.min': './src/clr-icons/index.ts',
-    // 'clr-icons-all-shapes.min': './src/clr-icons/clr-icons-all-shapes.ts',
+    index: './src/clr-icons/api.ts',
+    'clr-icons-api': './src/clr-icons/api.ts',
     'shapes/all': './src/clr-icons/shapes/all.umd.ts',
     'shapes/all.min': './src/clr-icons/shapes/all.umd.ts',
     'shapes/chart': './src/clr-icons/shapes/chart.umd.ts',
