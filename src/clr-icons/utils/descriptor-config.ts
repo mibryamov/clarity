@@ -4,4 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './shapes/index';
+export function descriptorConfig(value: any) {
+  return { enumerable: true, writable: true, configurable: true, value: value };
+}
