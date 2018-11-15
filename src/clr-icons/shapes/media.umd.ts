@@ -5,8 +5,6 @@
  */
 import { MediaShapes } from './media';
 
-export * from './media';
-
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
   window.ClarityIcons.add(MediaShapes);
 }

@@ -6,8 +6,6 @@
 import { ClrShapePiggyBankSVG, CommerceShapes } from './commerce';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-export * from './commerce';
-
 Object.defineProperty(CommerceShapes, 'savings', descriptorConfig(ClrShapePiggyBankSVG));
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {

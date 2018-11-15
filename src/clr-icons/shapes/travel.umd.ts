@@ -6,8 +6,6 @@
 import { ClrShapeAirplaneSVG, ClrShapeCarSVG, TravelShapes } from './travel';
 import { descriptorConfig } from '../utils/descriptor-config';
 
-export * from './travel';
-
 Object.defineProperty(TravelShapes, 'plane', descriptorConfig(ClrShapeAirplaneSVG));
 Object.defineProperty(TravelShapes, 'auto', descriptorConfig(ClrShapeCarSVG));
 

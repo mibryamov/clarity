@@ -7,8 +7,6 @@ import { ClrShapeEnvelopeSVG, ClrShapeStarSVG, SocialShapes } from './social';
 import { descriptorConfig } from '../utils/descriptor-config';
 import { ClrShapeCalendarSVG } from './core';
 
-export * from './social';
-
 Object.defineProperty(SocialShapes, 'favorite', descriptorConfig(ClrShapeStarSVG));
 Object.defineProperty(SocialShapes, 'email', descriptorConfig(ClrShapeEnvelopeSVG));
 Object.defineProperty(SocialShapes, 'date', descriptorConfig(ClrShapeCalendarSVG));
