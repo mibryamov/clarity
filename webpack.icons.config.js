@@ -12,6 +12,9 @@ module.exports = {
   entry: {
     index: './src/clr-icons/api.ts',
     'clr-icons-api': './src/clr-icons/api.ts',
+    'clr-icons-base': './src/clr-icons/api-autoload.ts',
+    'clr-icons': './src/clr-icons/autoload.ts',
+    'clr-icons.min': './src/clr-icons/autoload.ts',
     'shapes/all': './src/clr-icons/shapes/all.umd.ts',
     'shapes/all.min': './src/clr-icons/shapes/all.umd.ts',
     'shapes/chart': './src/clr-icons/shapes/chart.umd.ts',
