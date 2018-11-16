@@ -7,7 +7,6 @@
 import { IconAlias, IconShapeSources } from './interfaces/icon-interfaces';
 import { ShapeTemplateObserver } from './utils/shape-template-observer';
 import { ClarityIcon } from './element';
-import { CoreShapes } from './shapes/core';
 
 export namespace ClarityIconsApi {
   export class ClarityIconsApiImplementation {
@@ -54,7 +53,7 @@ export namespace ClarityIconsApi {
       }
     }
 
-    init(options: any = { includeCore: true }) {
+    init() {
       // check if there is a global object called "ClarityIcons"
       if (typeof window !== 'undefined') {
         if (window && !window.hasOwnProperty('ClarityIcons')) {
@@ -64,10 +63,6 @@ export namespace ClarityIconsApi {
 
         // Defining clr-icon custom element
         customElements.define('clr-icon', ClarityIcon.ClarityIconElement);
-      }
-
-      if (options.includeCore) {
-        instance.add(CoreShapes);
       }
     }
 
