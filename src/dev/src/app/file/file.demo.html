@@ -1,0 +1,241 @@
+<!--
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Angular File <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+
+  <clr-file-container clrBrowseLabel="Upload a file">
+    <input type="file" clrFile placeholder="No label, wrapper" name="one" multiple [(ngModel)]="vertical.one" />
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Full example</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="vertical.two" name="two" required minlength="8" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Disabled</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="vertical.three" name="three" required [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+
+  <clr-file-container>
+    <input type="file" clrFile placeholder="No label, wrapper" name="one" [(ngModel)]="horizontal.one" />
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Full example</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="horizontal.two" name="two" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Disabled</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="horizontal.three" name="three" required
+      [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+
+  <clr-file-container>
+    <input type="file" clrFile placeholder="No label, wrapper" name="one" [(ngModel)]="compact.one" />
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Full example</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="compact.two" name="two" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+  <clr-file-container>
+    <label>Disabled</label>
+    <input type="file" placeholder="Full example" clrFile [(ngModel)]="compact.three" name="three" required [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+
+</form>
+
+<h2>CSS Input</h2>
+
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label for="vertical-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+        <label for="vertical-basic" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="vertical-basic" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="vertical-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+          <label for="vertical-disabled" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="vertical-disabled" placeholder="Enter value here" class="clr-file" value="test value"
+          disabled>
+        </div>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-error" class="clr-control-label">
+      Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-file-wrapper">
+          <label for="vertical-error" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="vertical-error" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label for="horizontal-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+          <label for="horizontal-basic" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="horizontal-basic" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="horizontal-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+        <label for="horizontal-disabled" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="horizontal-disabled" placeholder="Enter value here" class="clr-file" value="test value"
+          disabled>
+        </div>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-error" class="clr-control-label">
+      Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-file-wrapper">
+        <label for="horizontal-error" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="horizontal-error" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label for="compact-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+        <label for="compact-basic" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="compact-basic" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="compact-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-file-wrapper">
+        <label for="compact-disabled" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="compact-disabled" placeholder="Enter value here" class="clr-file" value="test value"
+          disabled>
+        </div>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-error" class="clr-control-label">
+      Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-file-wrapper">
+        <label for="compact-error" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+        <input type="file" id="compact-error" placeholder="Enter value here" class="clr-file">
+      </div>
+      <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Override grid</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-file-container>
+    <label class="clr-col-12 clr-col-md-4">Full example</label>
+    <input class="clr-col-12 clr-col-md-8" type="file" placeholder="Name" clrFile [(ngModel)]="override" name="three"
+      required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-file-container>
+</form>
+
+<h4>No form wrapper</h4>
+
+<clr-file-container>
+  <label>No form</label>
+  <input type="file" placeholder="Last Name" clrFile [(ngModel)]="noform" name="three" required />
+  <clr-control-helper>Helper text</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-file-container>

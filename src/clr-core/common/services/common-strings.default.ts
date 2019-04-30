@@ -67,4 +67,5 @@ export const commonStringsDefault: ClrCommonStrings = {
   stackViewChanged: 'Value changed.',
   // Forms
   formErrorSummary: 'The form has {ERROR_NUMBER} errors.',
+  fileUploadButton: 'Browse',
 };

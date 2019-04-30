@@ -194,4 +194,5 @@ export interface ClrCommonStrings {
   stackViewChanged?: string;
   // Forms
   formErrorSummary?: string;
+  fileUploadButton?: string;
 }

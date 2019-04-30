@@ -48,6 +48,7 @@ export const APP_ROUTES: Routes = [
     path: 'dropdown',
     loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule),
   },
+  { path: 'file', loadChildren: () => import('./file/file.demo.module').then(m => m.FileDemoModule) },
   { path: 'forms', loadChildren: () => import('./forms/forms.demo.module').then(m => m.FormsDemoModule) },
   { path: 'grid', loadChildren: () => import('./grid/grid.demo.module').then(m => m.GridDemoModule) },
   {

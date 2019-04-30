@@ -153,6 +153,16 @@
       "dox": 20
     },
     {
+      "url": "file",
+      "text": "File Upload",
+      "type": "component",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 20,
+      "dox": 20
+    },
+    {
       "url": "forms",
       "text": "Forms",
       "type": "component",

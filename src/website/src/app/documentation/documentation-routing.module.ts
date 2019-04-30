@@ -127,6 +127,14 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'file',
+        loadChildren: 'src/app/documentation/demos/file/file.demo.module#FileDemoModule',
+        data: {
+          bodyClass: 'page-file',
+          browserTitle: 'File Upload',
+        },
+      },
+      {
         path: 'forms',
         loadChildren: () => import('./demos/forms/forms.demo.module').then(m => m.FormsDemoModule),
         data: {
