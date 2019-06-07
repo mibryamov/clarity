@@ -1,21 +1,21 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import 'zone.js/dist/zone-node';
-import 'reflect-metadata';
-import { enableProdMode } from '@angular/core';
+// import 'reflect-metadata';
+// import { enableProdMode } from '@angular/core';
 // Express Engine
-import { ngExpressEngine } from '@nguniversal/express-engine';
+// import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+// import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
 import { join } from 'path';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
-enableProdMode();
+// enableProdMode();
 
 // Express server
 const app = express();
@@ -25,7 +25,12 @@ const DIST_FOLDER = join(process.cwd(), 'dist/website/browser');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 // tslint:disable-next-line
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/website/server/main');
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP,
+  ngExpressEngine,
+  provideModuleMap,
+} = require('../../dist/website/server/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine(

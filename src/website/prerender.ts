@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,13 +17,13 @@ import * as del from 'del';
 import * as minimist from 'minimist';
 import { environment } from './src/environments/environment';
 
-import { enableProdMode } from '@angular/core';
+// import { enableProdMode } from '@angular/core';
 // Faster server renders w/ Prod mode (dev mode never needed)
-enableProdMode();
+// enableProdMode();
 
 // Express Engine
 // Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+// import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { renderModuleFactory } from '@angular/platform-server';
 
 const argv = minimist(process.argv.slice(2), {
@@ -36,7 +36,7 @@ const argv = minimist(process.argv.slice(2), {
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 // tslint:disable-next-line
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/website/server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP, provideModuleMap } = require('../../dist/website/server/main');
 
 // Path is relative to dist/ directory where it runs
 const BROWSER_FOLDER = join(process.cwd(), 'dist/website/browser');

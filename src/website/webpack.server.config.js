@@ -22,7 +22,11 @@ module.exports = {
     path: path.join(__dirname, '../../dist', 'website'),
     filename: '[name].js',
   },
+  externals: {
+    './dist/website/server/main': 'require("./dist/website/server/main")',
+  },
   module: {
+    noParse: /polyfills-.*\.js/,
     rules: [
       { test: /\.ts$/, loader: 'ts-loader' },
       {

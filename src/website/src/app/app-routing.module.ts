@@ -10,21 +10,21 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'icons',
-    loadChildren: () => import('src/app/icons/icons.module').then(m => m.IconsModule),
-    data: {
-      bodyClass: 'layout-icons',
-    },
-  },
+  // {
+  //   path: 'icons',
+  //   loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule),
+  //   data: {
+  //     bodyClass: 'layout-icons',
+  //   },
+  // },
   {
     path: 'community',
-    loadChildren: () => import('src/app/community/community.module').then(m => m.CommunityModule),
+    loadChildren: () => import('./community/community.module').then(m => m.CommunityModule),
   },
-  {
-    path: 'news',
-    loadChildren: () => import('src/app/news/news.module').then(m => m.NewsModule),
-  },
+  // {
+  //   path: 'news',
+  //   loadChildren: () => import('./news/news.module').then(m => m.NewsModule),
+  // },
   {
     path: '',
     component: HomeComponent,

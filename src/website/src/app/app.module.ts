@@ -24,7 +24,7 @@ import { SkipLinkComponent } from './utils/skip-link.component';
     BrowserModule.withServerTransition({ appId: 'clarity' }),
     BrowserAnimationsModule,
     ClarityModule,
-    DocumentationModule,
+    // DocumentationModule,
     UtilsModule,
     AppRoutingModule,
   ],
