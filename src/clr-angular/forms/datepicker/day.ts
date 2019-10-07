@@ -16,19 +16,21 @@ import { DateNavigationService } from './providers/date-navigation.service';
 @Component({
   selector: 'clr-day',
   template: `
-        <button
-            class="day-btn"
-            type="button"
-            [class.is-today]="dayView.isTodaysDate"
-            [class.is-disabled]="dayView.isDisabled"
-            [class.is-selected]="dayView.isSelected"
-            [attr.tabindex]="dayView.tabIndex"
-            (click)="selectDay()"
-            (focus)="onDayViewFocus()"
-            [attr.aria-label]="dayString">
-            {{dayView.dayModel.date}}
-        </button>
-    `,
+      <button
+              class="day-btn"
+              type="button"
+              [class.is-today]="dayView.isTodaysDate"
+              [class.is-excluded]="dayView.isExcluded"
+              [class.is-disabled]="dayView.isDisabled"
+              [class.is-selected]="dayView.isSelected"
+              [attr.tabindex]="dayView.tabIndex"
+              [attr.disabled]="dayView.isDisabled ? 'true' : null"
+              (click)="selectDay()"
+              (focus)="onDayViewFocus()"
+              [attr.aria-label]="dayString">
+          {{dayView.dayModel.date}}
+      </button>
+  `,
   host: { '[class.day]': 'true' },
 })
 export class ClrDay {

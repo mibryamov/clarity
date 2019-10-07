@@ -54,6 +54,16 @@ import { datesAreEqual } from './utils/date-utils';
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
   @Input() placeholder: string;
+  @Input()
+  set min(value: string) {
+    const [year, month, day] = value.split('-').map(n => parseInt(n, 10));
+    this.dateIOService.disabledDates[0].bottom = new DayModel(year, month - 1, day);
+  }
+  @Input()
+  set max(value: string) {
+    const [year, month, day] = value.split('-').map(n => parseInt(n, 10));
+    this.dateIOService.disabledDates[1].top = new DayModel(year, month - 1, day);
+  }
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
   @Input('clrDate')
   set date(date: Date) {
