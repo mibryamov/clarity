@@ -21,5 +21,8 @@
     },
     "lib": ["es2017", "dom"]
   },
+  "angularCompilerOptions": {
+    "generateDeepReexports": true
+  },
   "exclude": ["node_modules/**", "dist/**"]
 }
