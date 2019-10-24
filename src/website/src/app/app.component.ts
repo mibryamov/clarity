@@ -23,14 +23,19 @@ export class AppComponent implements OnInit {
   contentRef: ElementRef;
   environment = environment;
 
-  constructor(private renderer: Renderer, private el: ElementRef, public router: Router, private titleService: Title) {}
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+    public router: Router,
+    private titleService: Title
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe((change: any) => {
       if (change instanceof NavigationEnd) {
-        this.bodyClasses.forEach(className => this.renderer.setElementClass(this.el.nativeElement, className, false));
+        this.bodyClasses.forEach(className => this.renderer.removeClass(this.el.nativeElement, className));
         this.updateBodyClasses();
-        this.bodyClasses.forEach(className => this.renderer.setElementClass(this.el.nativeElement, className, true));
+        this.bodyClasses.forEach(className => this.renderer.addClass(this.el.nativeElement, className));
 
         this.updateBrowserTitle();
 
