@@ -10,5 +10,12 @@
       "@clr/icons": ["../clr-icons"],
       "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
     }
-  }
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
+  ]
 }

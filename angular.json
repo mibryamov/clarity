@@ -114,7 +114,8 @@
           "configurations": {
             "production": {
               "project": "src/clr-angular/ng-package.prod.json"
-            }
+            ,              "tsConfig": "src/clr-angular/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -149,6 +150,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/website/browser",
             "index": "src/website/src/index.html",
             "main": "src/website/src/main.ts",
@@ -200,6 +202,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -230,7 +236,12 @@
             "project": "src/clr-core/ng-package.json",
             "tsConfig": "src/clr-core/tsconfig.lib.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "src/clr-core/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -268,7 +279,7 @@
             "main": "src/dev-core/src/main.ts",
             "polyfills": "src/dev-core/src/polyfills.ts",
             "tsConfig": "src/dev-core/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               { "glob": "**/*", "input": "src/dev-core/src/api/", "output": "./api/" },
               "src/dev-core/src/favicon.ico",
@@ -294,7 +305,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -303,6 +313,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
