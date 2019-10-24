@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
  * Hack while waiting for https://github.com/angular/angular/issues/6595 to be fixed.
  */
 
-import { Directive, Input, OnDestroy, OnInit, ContentChildren, QueryList, Renderer, ElementRef } from '@angular/core';
+import { Directive, Input, OnDestroy, OnInit, ContentChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { Subscription } from 'rxjs';
 

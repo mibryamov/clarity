@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, OnInit, Renderer, InjectionToken, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, InjectionToken, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../environments/environment';

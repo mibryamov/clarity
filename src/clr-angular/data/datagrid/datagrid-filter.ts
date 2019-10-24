@@ -83,7 +83,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     );
   }
 
-  @ViewChild('anchor', { static: false, read: ElementRef })
+  @ViewChild('anchor', { read: ElementRef })
   anchor: ElementRef;
 
   // Smart Popover
