@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -43,6 +43,16 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-content select="[clrDate]"></ng-content>
+            <button type="button"
+                    *ngIf="hasValue"
+                    class="clr-input-group-icon-action"
+                    [attr.title]="commonStrings.keys.clear"
+                    [attr.aria-label]="commonStrings.keys.clear"
+                    (click)="clearValue()">
+              <clr-icon shape="times-circle"></clr-icon>
+            </button>
+            <div class="clr-input-group-icon-action clr-input-group-icon-action-placeholder" 
+                  *ngIf="!hasValue"></div>
             <button #actionButton
                     type="button"
                     class="clr-input-group-icon-action"
@@ -113,9 +123,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
-      })
-    );
-    this.subscriptions.push(
+      }),
       this.ngControlService.controlChanges.subscribe(control => {
         this.control = control;
       })
@@ -176,6 +184,14 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
   toggleDatepicker(event: MouseEvent) {
     this._toggleService.toggleWithEvent(event);
     this.dateFormControlService.markAsTouched();
+  }
+
+  clearValue() {
+    this.dateFormControlService.clear();
+  }
+
+  get hasValue() {
+    return this.dateFormControlService.value;
   }
 
   /**

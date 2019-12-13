@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -109,7 +109,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       this.listenForControlValueChanges(),
       this.listenForTouchChanges(),
       this.listenForDirtyChanges(),
-      this.listenForInputRefocus()
+      this.listenForInputRefocus(),
+      this.listenForClearChanges()
     );
   }
 
@@ -208,19 +209,27 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   }
 
   private updateInput(date: Date) {
+    let value;
     if (date) {
       const dateString = this.dateIOService.toLocaleDisplayFormatString(date);
       if (this.usingNativeDatepicker()) {
         // valueAsDate expects UTC, date from input is time-zoned
         date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
         this.renderer.setProperty(this.el.nativeElement, 'valueAsDate', date);
+        value = date;
       } else if (this.datepickerHasFormControl() && dateString !== this.control.value) {
         this.control.control.setValue(dateString);
+        value = dateString;
       } else {
         this.renderer.setProperty(this.el.nativeElement, 'value', dateString);
+        value = dateString;
       }
     } else {
       this.renderer.setProperty(this.el.nativeElement, 'value', '');
+    }
+
+    if (this.dateFormControlService) {
+      this.dateFormControlService.value = value;
     }
   }
 
@@ -260,6 +269,12 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
   private listenForUserSelectedDayChanges() {
     return this.dateNavigationService.selectedDayChange.subscribe(dayModel => this.updateDate(dayModel.toDate(), true));
+  }
+
+  private listenForClearChanges() {
+    return this.dateFormControlService.clearedChange.subscribe(() => {
+      this.updateInput(null);
+    });
   }
 
   private listenForTouchChanges() {
