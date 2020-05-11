@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+import { Vue as VueIntegration } from '@sentry/integrations';
 import './styles/index.scss';
 
 export default ({
@@ -9,5 +11,11 @@ export default ({
 }) => {
   if (!isServer) {
     import('./core');
+
+    // Setup Sentry for error tracking
+    Sentry.init({
+      dsn: 'https://3e41de8eb9e440d6b834fc556ad8e83c@o378402.ingest.sentry.io/5201749',
+      integrations: [new VueIntegration({ Vue, attachProps: true })],
+    });
   }
 };
