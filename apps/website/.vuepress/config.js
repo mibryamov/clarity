@@ -74,13 +74,16 @@ module.exports = {
       },
     ],
   },
-  // Disabling include plugin until I figure out if it casuse Vuepress to hang.
   markdown: {
     extendMarkdown: md => {
-      md.use(require('markdown-it-include'));
-    },
-    extendMarkdown: md => {
+      // Disabling include plugin until I figure out if it casuse Vuepress to hang.
+      // md.use(require('markdown-it-include'));
       md.use(markdownItAttrs);
+    },
+    anchor: {
+      permalink: true,
+      permalinkBefore: false,
+      permalinkSymbol: '🔗',
     },
   },
   plugins: [
@@ -92,7 +95,7 @@ module.exports = {
       'vuepress-plugin-container',
       {
         type: 'summary',
-        render: function(tokens, idx) {
+        render: function (tokens, idx) {
           const item = tokens[idx];
           if (item.type === 'container_summary_open') {
             return `<ClrSummary>`;
