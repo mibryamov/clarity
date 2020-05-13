@@ -1,7 +1,7 @@
 # Internationalization
 
-* [Design Guidelines](/documentation/internationalization#top)
-* [Code & Examples](/documentation/internationalization#examples)
+- [Design Guidelines](/documentation/internationalization#top)
+- [Code & Examples](/documentation/internationalization#examples)
 
 ##### Easily translate internal Clarity text into multiple languages.
 

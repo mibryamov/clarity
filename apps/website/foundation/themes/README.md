@@ -1,7 +1,7 @@
 # Themes
 
-* [Design Guidelines](/documentation/themes#top)
-* [Code & Examples](/documentation/themes#examples)
+- [Design Guidelines](/documentation/themes#top)
+- [Code & Examples](/documentation/themes#examples)
 
 ##### Themes help you customize the look and feel of your application.
 
@@ -154,8 +154,8 @@ Clarity has a number of such variables. The [\_variables.clarity.scss](https://g
 
 It is these variables that we override in SASS to build out a new CSS file for our theme.
 
-* Light Theme Base
-* Dark Theme Base
+- Light Theme Base
+- Dark Theme Base
 
 In order to customize the Clarity light theme you will need to build with the Clarity SCSS and overwrite the SCSS variables that set the look-n-feel for each component you need to customize. You will need to build your applications CSS output with Clarity's SCSS.
 
@@ -199,10 +199,10 @@ For more information on using CSS custom properties, [see this article on MDN](/
 
 When doing research on how best to deliver a theming solution to our developer community, the Clarity team identified several primary use cases:
 
-* use of a non-default theme, like the dark theme, with no theme switching
-* switching between two themes, like a light/dark theme switcher
-* "whitelabeling"
-* dynamically switching an application between "whitelabeling" options
+- use of a non-default theme, like the dark theme, with no theme switching
+- switching between two themes, like a light/dark theme switcher
+- "whitelabeling"
+- dynamically switching an application between "whitelabeling" options
 
 #### CSS Custom Property Dark Theme
 

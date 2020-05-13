@@ -4,19 +4,19 @@ const markdownItAttrs = require('markdown-it-attrs');
 
 const order = ['code', 'usage', 'demo', 'api', 'accessibility'];
 
-function getChildren(dir) {
-  return fs
-    .readdirSync(path.join(process.cwd(), dir))
-    .filter(file => file.includes('.md') && !file.includes('README'))
-    .map(file => `/${dir}/${file.replace('.md', '')}`);
-}
+// function getChildren(dir) {
+//   return fs
+//     .readdirSync(path.join(process.cwd(), dir))
+//     .filter(file => file.includes('.md') && !file.includes('README'))
+//     .map(file => `/${dir}/${file.replace('.md', '')}`);
+// }
 
 function camelCase(str) {
   const parts = str.split('-');
   return parts.map(part => part.replace(part.charAt(0), part.charAt(0).toUpperCase())).join(' ');
 }
 
-function sortComponentChildren(children) {
+function sortChildren(children) {
   return children.sort((a, b) => {
     const aIndex = order.findIndex(o => a.includes(o));
     const bIndex = order.findIndex(o => b.includes(o));
@@ -24,16 +24,16 @@ function sortComponentChildren(children) {
   });
 }
 
-function getComponentChildren() {
-  const base = path.join(process.cwd(), 'components');
+function getChildren(dir) {
+  const base = path.join(process.cwd(), dir);
   const components = fs
     .readdirSync(base)
     .filter(basename => fs.statSync(path.join(base, basename)).isDirectory())
-    .map(dir => {
+    .map(subdir => {
       return {
-        title: camelCase(dir),
-        path: '/components/' + dir,
-        children: [`/components/${dir}/`, ...sortComponentChildren(getChildren(`components/${dir}`))],
+        title: camelCase(subdir),
+        path: `/${dir}/${subdir}`,
+        children: [`/${dir}/${subdir}/`, ...sortChildren(getChildren(`${dir}/${subdir}`))],
       };
     });
   return components;
@@ -65,7 +65,7 @@ module.exports = {
       {
         title: 'Components',
         path: '/components/',
-        children: getComponentChildren(),
+        children: getChildren('components'),
       },
       {
         title: 'Releases',

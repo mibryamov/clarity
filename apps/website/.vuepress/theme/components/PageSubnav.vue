@@ -1,11 +1,17 @@
 <template>
   <div v-if="subnav && subnav.children">
-    <h1>{{subnav.title}}</h1>
-    <ul class="nav page-subnav" role="nav">
+    <h1>{{ subnav.title }}</h1>
+    <ul class="nav page-subnav" role="nav" v-if="subnav.children.length > 1">
       <li role="presentation" class="nav-item" v-for="item of subnav.children">
-          <router-link :to="item.path" class="btn btn-link nav-link" aria-selected="true" v-bind:class="{ active: activePage.path === item.path }">{{item.title}}</router-link>
+        <router-link
+          :to="item.path"
+          class="btn btn-link nav-link"
+          aria-selected="true"
+          v-bind:class="{ active: activePage.path === item.path }"
+          >{{ item.title }}</router-link
+        >
       </li>
-  </ul>
+    </ul>
   </div>
 </template>
 

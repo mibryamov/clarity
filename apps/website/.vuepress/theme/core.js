@@ -1,27 +1,25 @@
 import '@clr/core/alert';
 import '@clr/core/button';
 import '@clr/core/icon';
+
 import {
-  ClarityIcons,
-  homeIcon,
-  angleDoubleIcon,
-  angleIcon,
-  bookmarkIcon,
-  checkIcon,
-  folderIcon,
-  cogIcon,
-  timesIcon,
-  popOutIcon,
+  loadCoreIconSet,
+  loadChartIconSet,
+  loadCommerceIconSet,
+  loadEssentialIconSet,
+  loadMediaIconSet,
+  loadSocialIconSet,
+  loadTechnologyIconSet,
+  loadTextEditIconSet,
+  loadTravelIconSet,
 } from '@clr/core/icon-shapes';
 
-ClarityIcons.addIcons(
-  angleDoubleIcon,
-  angleIcon,
-  homeIcon,
-  bookmarkIcon,
-  checkIcon,
-  folderIcon,
-  cogIcon,
-  timesIcon,
-  popOutIcon
-);
+loadCoreIconSet();
+loadChartIconSet();
+loadEssentialIconSet();
+loadCommerceIconSet();
+loadMediaIconSet();
+loadSocialIconSet();
+loadTechnologyIconSet();
+loadTextEditIconSet();
+loadTravelIconSet();
